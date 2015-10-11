@@ -1,0 +1,12 @@
+.container {
+    width: 980px;
+    padding: 10px 50px;
+}
+
+input[type="text"] {
+    min-height:20px;
+}
+
+#footer {
+    width: 980px;
+}

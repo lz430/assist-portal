@@ -1,0 +1,44 @@
+<?php
+/**
+ * Template Name: Portal Dashboard
+ *
+ * @package assist-portal
+ */
+get_header();
+?>
+
+<div class="container portal-header">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+    <h2>Hello {{Fullname}}</h2>
+  </div>
+  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+    <h4>Account Number: {{account}} </h4>
+  </div>
+</div><!-- end container-->
+<div class="container">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h3>Account Usage Summary</h3>
+    <div class="account-summary col-lg-5 col-md-5 col-sm-5 col-xs-12">
+      <p>All shared lines on your account</p>
+      <!-- <div id="chartContainer"></div> -->
+      <div class="chart daysLeft"><span class="daysLeft">{{DaysLeft}}</span> days left in your usage cycle (ends {{CycleEndDate}})</div>
+      <div class="chart data">{{DataUsed}} out of {{TotalData}}</div>
+      <div class="chart minutes">{{MinutesUsed}} out of {{TotalMinutes}}</div>
+      <div class="chart messages">{{MessagesUsed}} out of {{TotalMessages}}</div>
+    </div>
+
+    <div class="balance col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        <h5>Current Balance:</h5>
+        <p>{{balance}}</p>
+        <p>Due on {{DueDate}}</p>
+        <a href="#" class="autopay">Setup &amp; manage autopay></a>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        <a href="#" class="btn btn-primary">Pay Now</a>
+        <p>View current bill></p>
+      </div>
+    </div>
+  </div>
+</div><!-- end container-->
+<?php get_footer(); ?>

@@ -1,0 +1,807 @@
+div.link-text {
+	text-align: left;
+}
+
+#wpmem_reg input[type="text"], #wpmem_reg textarea, #wpmem_login input[type="text"], #wpmem_login input[type="password"] {
+  height: 35px !important;
+  line-height: 35px !important;
+}
+
+#enrol-bar {
+	border-radius: 3px;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 0.05em;
+	margin: 20px 0 15px;
+	padding: 12px 0;
+	text-align: center;
+    background: rgb(174, 10, 30); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(174, 10, 30, 1)), color-stop(100%, rgba(142, 5, 21, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ae0a1e', endColorstr = '#8e0515', GradientType = 0); /* IE6-9 */
+}
+#enrol-bar span {
+	display: inline-block; 
+	margin: 0 10px;
+}
+
+#enrollment-form-intro {
+    padding:20px;
+}
+
+#enrollment-form-intro p {
+    margin:0;
+}
+
+#enrollment-form-container {
+    border: 1px solid #af1626;
+    margin: auto;
+    background-color: #fff;
+}
+
+#enrollment-form-steps {
+  background-color: #e7e6ca;
+  height: 85px;
+  padding: 8px 0;
+}
+
+#enrollment-form-steps ul {
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+    width: 100%;
+    clear: both;
+}
+
+#enrollment-form-steps ul li {
+  border-right: 1px solid #af1626;
+  color: #000;
+  float: left;
+  font-size: 13px;
+  line-height: 15px;
+  margin: 5px 0 0;
+  padding: 44px 0 0;
+  text-align: center;
+  width: 109px;
+}
+
+.steps-enrollment-step6 {
+    border-right: none !important;
+}
+
+.enrollment-step h2 {
+    font-size: 24px !important;
+    font-weight: normal !important;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step1 {
+    background: url('../images/enrollment1_off.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step2 {
+    background: url('../images/enrollment2_off.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step3 {
+    background: url('../images/enrollment3_off.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step4 {
+    background: url('../images/enrollment4_off.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step5 {
+    background: url('../images/enrollment5_off.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step6 {
+    background: url('../images/enrollment6_off.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step1.active {
+    background: url('../images/enrollment1.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step2.active {
+    background: url('../images/enrollment2.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step3.active {
+    background: url('../images/enrollment3.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step4.active {
+    background: url('../images/enrollment4.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step5.active {
+    background: url('../images/enrollment5.png') no-repeat top center;
+}
+
+#enrollment-form-steps ul li.steps-enrollment-step6.active {
+    background: url('../images/enrollment6.png') no-repeat top center;
+}
+
+#enrollment-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#enrollment-steps li {
+    color: #000;
+    font-size: 14px;
+    list-style: none;
+    padding: 0;
+    margin: 30px 20px 20px 20px;
+}
+
+#enrollment-steps li p {
+    margin: 10px 0;
+}
+
+#enrollment-steps li h2 span.step {
+    color: #af1626;
+}
+
+#enrollment-step1 p.intro {
+    margin: auto;
+}
+
+.enrollment-submit {
+  background-color: #af1626;
+  border: medium none;
+  color: #fff;
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px;
+}
+
+.enrollment-submit:hover {
+	color: #fff;
+	opacity: .8;
+}
+
+.enrollment-submit.large {
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 10px 15px;
+}
+
+.new-orders-email {
+    color: #af1626;
+}
+
+#zip, #email {
+    border: 1px solid #af1626;
+    padding: 3px;
+}
+
+#zip-field-wrapper label {
+    margin-right: 15px;
+}
+
+#step1-submit {
+    width: 85px;
+}
+
+#step1-button-wrapper {
+    margin: 20px auto;
+    text-align:center;
+}
+
+#household-field-wrapper {
+    width: 500px;
+    margin: auto;
+}
+
+.radio-label {
+    display: inline-block;
+    background-color: #af1626;
+    color: #fff;
+    border: none;
+    padding: 5px;
+}
+
+/* END STEP 1 */
+
+/* STEP 2*/
+
+#plans-table {
+    border-left: 1px solid #af1626;
+    border-right: 1px solid #af1626;
+    border-top: 1px solid #af1626;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#plans-table ul.plans-row:nth-child(even) {
+	background: #e7e6ca;
+}
+
+#plans-table td {
+    padding: 10px;
+}
+
+#plans-table thead th {
+    padding: 10px;
+    color: #af1626;
+    text-align: left;
+}
+
+#plans-table td {
+    border-bottom: 1px solid #af1626;
+}
+
+#plans-table thead {
+    background-color: #e7e6ca;
+}
+
+#plans-table thead {
+    background-color: #e7e6ca;
+}
+
+#plans-table ul {
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+
+#plans-table ul li {
+    float:left;
+    margin:0;
+}
+
+#plans-table ul.plans-header,
+#plans-table ul.plans-row{
+    border-bottom: 1px solid #af1626;
+}
+
+#plans-table ul.plans-row.alt {
+	background: #e7e6ca;
+	padding: 5px 0;
+}
+
+#plans-table ul.plans-header {
+  background-color: #af1626;
+  color: #fff;
+  font-weight: bold;
+}
+
+#plans-table ul.plans-header li {
+	color: #fff;
+}
+
+#plans-table li {
+    padding:4px;
+    font-size:12px;
+    line-height:18px;
+}
+
+#plans-table li.checkbox {
+    width:20px;
+    text-align:center;
+}
+#plans-table li.popular {
+    width:60px;
+}
+#plans-table li.name {
+    width:275px;
+}
+#plans-table li.activation-cost {
+    width:85px;
+}
+#plans-table li.monthly-cost {
+    width:85px;
+}
+#plans-table li.minutes {
+    width:75px;
+}
+#plans-table li.txts {
+    width:185px;
+}
+#plans-table li.rollover {
+    width:60px;
+}
+
+.radio-block {
+	background: #e7e6ca;
+	padding: 10px 15px;
+	margin-bottom: 15px;
+}
+.radio-block label {
+  color: #b10b1f;
+  font-weight: bold;
+  text-align: left !important;
+}
+.radio-block input {
+  border: medium none !important;
+  width: 40px !important;
+}
+
+
+#wpmem_login {}
+#wpmem_login label {
+  display: inline-block;
+  margin: 0 20px 20px 0;
+}
+#wpmem_login .div_text {
+  display: inline-block;
+  margin: 0 20px 20px 0;
+}
+#wpmem_login .link-text:last-child { display: none; }
+
+body #wpmem_reg input[type="text"], body #wpmem_reg textarea, body #wpmem_login input[type="text"], body #wpmem_login input[type="password"] {
+  border: 1px solid #b10b1f;
+  height: 25px !important;
+  line-height: 25px !important;
+}
+
+#enrollment-step5 div input[type=checkbox] {
+  float: left;
+  margin: 4px 10px 0 0;
+}
+
+#enrollment-step5 label {
+	opacity: .3;
+}
+
+@media (max-width:767px) {
+
+    #plans-table li.txts,
+    #plans-table li.name{
+        float:none;
+        width:100%;
+    }
+
+    #plans-table li.name {
+        font-weight:bold;
+    }
+
+    #plans-table li.txts {
+        clear:both;
+    }
+
+    #plans-table .plans-header .name,
+    #plans-table .plans-header .txts{
+        display:none;
+    }
+    #plans-table li.rollover {
+        width:40px;
+    }
+    #plans-table li.minutes {
+        width:55px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+    #plans-table li.rollover {
+        width:48px;
+    }
+
+    #plans-table li.txts {
+        width:180px;
+    }
+}
+
+@media (min-width: 979px) and (max-width: 1200px) {
+
+    #plans-table li.rollover {
+        width:48px;
+    }
+
+    #plans-table li.txts {
+        width:170px;
+    }
+}
+
+.fine-print {
+    font-size: 11px !important;
+    line-height: 18px !important;
+}
+
+.acknowledge {
+    margin-bottom: 15px;
+    color: #af1626;
+}
+
+/* END STEP 2 */
+
+p.address-warning {
+    color: #af1626 !important;
+    font-size: 18px !important;
+}
+
+#enrollment-step3 .field-wrapper label {
+    width: 250px;
+}
+
+#enrollment-step4 .field-wrapper.signature label {
+    width: 235px;
+    text-align: left !important;
+}
+
+.field-wrapper label {
+    text-align: right;
+    display: inline-block;
+}
+
+.field-wrapper input, .field-wrapper select {
+    border: 1px solid #af1626;
+    padding: 3px;
+    width: 220px;
+    margin-bottom: 10px;
+}
+
+.field-wrapper select {
+    width: 228px;
+}
+
+.step2 {
+  background: #e7e6ca none repeat scroll 0 0;
+  margin-bottom: 25px;
+  padding: 10px 15px;
+}
+.step2 .field-wrapper label {
+  padding-right: 15px;
+  width: 180px;
+}
+.step2 .field-wrapper input[type=text] {
+	
+}
+
+
+#poverty-table {
+    border-left: 1px solid #af1626;
+    border-right: 1px solid #af1626;
+    border-top: 1px solid #af1626;
+    padding: 0;
+    margin: 20px auto;
+}
+
+#poverty-table td {
+    padding: 10px;
+}
+
+#poverty-table thead th {
+    padding: 10px;
+    color: #af1626;
+}
+
+#poverty-table td {
+    border-bottom: 1px solid #af1626;
+}
+
+#poverty-table thead {
+    background-color: #e7e6ca;
+}
+
+#poverty-table thead {
+    background-color: #e7e6ca;
+}
+
+#enrollment-step4 .field-wrapper label {
+    width: 200px;
+}
+
+.enrollment-status-label {
+    color: #af1626;
+}
+
+.document-container {
+    border: 1px solid #af1626;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #e7e6ca;
+}
+
+#initial {
+    width: 30px;
+}
+
+.document-container div {
+    float: left;
+}
+
+.document-label {
+  display: inline-block;
+  text-align: center;
+  width: 25%;
+}
+
+.document-details {
+  display: inline-block;
+  margin: 0 0 25px;
+  vertical-align: top;
+  width: 73%;
+}
+
+#modal-upload .buttons-wrapper {
+    text-align: center;
+}
+
+#upload-options {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#signature {
+    margin-bottom: 0px !important;
+}
+
+.errors li {
+    text-align: left;
+}
+
+/* MODALS */
+
+.modal-content {
+    display: none;
+}
+
+.modal-content h2 {
+    margin: 0;
+    background-color: #af1626;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+}
+
+.modal-content h2.no-background {
+    background-color: #fff;
+    color: #af1626;
+    text-align: left;
+}
+
+.modal-content .body {
+    padding: 15px;
+    text-align: center;
+}
+
+.modal-content .buttons-wrapper {
+    padding-right: 15px;
+    padding-bottom: 15px;
+    text-align: right;
+}
+
+.modal-content .buttons-wrapper input {
+    background-color: #af1626;
+    color: #fff;
+    border: none;
+    padding: 8px;
+}
+
+.modal-content p {
+    color: #000;
+}
+
+/* Overlay */
+
+#simplemodal-overlay {
+    background-color: #000;
+}
+
+/* Container */
+
+#simplemodal-container {
+    height: 360px;
+    width: 600px;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #af1626;
+    padding: 0;
+}
+
+#simplemodal-container .simplemodal-data {
+    padding: 0px;
+}
+
+.plans-row li label{
+	display:none;
+}
+
+#mobile-poverty-table{
+	display:none;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	margin: 0;
+}
+
+.check-boxes div{
+	margin-bottom:5px;
+}
+
+.upload-examples{
+	width:100%;
+	text-align:center;
+}
+
+.home-button{
+	margin-top:20px;
+	margin-right:125px;
+	float:right
+}
+
+.options-table{
+	width:450px;
+	margin:auto;
+}
+
+.download-option {
+	display:inline-block;
+	margin-left:5px;
+	margin-top:3px;
+}
+
+.parens{
+    font-style:italic;
+    font-size:10px;
+}
+
+@media (max-width:767px) {
+
+	.plans-header{
+		display:none;
+	}
+
+	.plans-row li{
+		display:block;
+		width:100% !important;
+	}
+
+	.plans-row li.checkbox{
+		display:inline-block;
+		width:30px !important;
+	}
+
+	.plans-row li.checkbox input{
+		margin-top:0;
+	}
+
+	.plans-row li.name{
+		display:inline-block;
+		width:217px !important;
+	}
+
+	.plans-row li label{
+		display:inline-block;
+		font-weight:bold;
+		margin-right:5px;
+	}
+
+	#poverty-table{
+		display:none !important;
+	}
+
+	#mobile-poverty-table{
+		border: 1px solid #af1626;
+		padding: 0;
+		margin: 20px auto;
+		padding:0;
+	}
+
+    #mobile-poverty-table.active{
+        display:block !important;
+    }
+
+	#mobile-poverty-table .header{
+		padding: 10px;
+		color: #af1626;
+		background-color: #e7e6ca;
+		font-weight:bold;
+		text-align:center;
+		margin-bottom:10px;
+	}
+
+	#mobile-poverty-table ul li{
+		margin:0;
+		padding:0;
+	}
+
+	#mobile-poverty-table ul li label{
+		width:50px;
+		font-weight:bold;
+		display:inline-block;
+	}
+
+	#middle_initial{
+		display:block;
+	}
+
+	#modal-documents .modal-header h2{
+		font-size:15px;
+	}
+
+	#modal-documents .modal-body p{
+		font-size:11px;
+		margin-bottom:10px;
+	}
+
+	#modal-documents .upload-examples{
+		display:none;
+	}
+
+	.document-container {
+		width:80%;
+	}
+
+	.document-container div {
+		float: none !important;
+	}
+
+	.document-label {
+		width: 100% ;
+		border-right: none !important;
+		text-align: center;
+		color: #af1626;
+		font-weight: bold;
+		font-size: 16px;
+		height:30px;
+		line-height:30px;
+	}
+
+	.document-details {
+		width: 100%;
+		text-align: center;
+		padding-left: 0px;
+	}
+
+	.home-button{
+		margin-top:20px;
+		margin-right:25px;
+		margin-bottom:20px;
+		float:right
+	}
+
+	.doc-upload{
+		display:none;
+	}
+
+	.options-table{
+		width:280px;
+	}
+
+	.download-option {
+		font-size:11px;
+	}
+
+}
+
+#mask {
+    position:absolute;
+    z-index:9000;
+    background-color:#000;
+    display:none;
+    Top:0;
+    Left:0;
+    opacity:0.8;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE 8 */
+    filter: alpha(opacity=80); /* older IEs */
+}
+
+.Coupon
+{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 10000;
+
+    height: 335px;
+    margin-top: -165px;
+
+    width: 719px;
+    margin-left: -359px;
+    background:#fff;
+    padding:15px 30px 80px 30px;
+}

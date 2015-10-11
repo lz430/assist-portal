@@ -1,0 +1,289 @@
+.woocommerce ul.products li.product a img,
+.woocommerce-page ul.products li.product a img,
+.woocommerce ul.products li.product a:hover img,
+.woocommerce div.product div.images img,
+.woocommerce-page div.product div.images img,
+.woocommerce #content div.product div.images img,
+.woocommerce-page #content div.product div.images img {
+    box-shadow: none;
+}
+
+.woocommerce-ordering,
+.woocommerce-result-count {
+    display: none;
+}
+
+.woocommerce ul.products {
+    margin: 30px auto 20px auto;
+}
+
+.woocommerce ul.products li.product a img,
+.woocommerce-page ul.products li.product a img,
+.woocommerce ul.products li.product a:hover img,
+.woocommerce .related ul.products li.product img,
+.woocommerce-page .related ul.products li.product img,
+.woocommerce .upsells.products ul.products li.product img,
+.woocommerce-page .upsells.products ul.products li.product img,
+.woocommerce .related ul li.product img,
+.woocommerce-page .related ul li.product img,
+.woocommerce .upsells.products ul li.product img,
+.woocommerce-page .upsells.products ul li.product img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.woocommerce-info:before {
+    background-color: #b10b1f;
+}
+
+.woocommerce-info {
+    border-top: 3px solid #b10b1f;
+}
+
+.woocommerce-message:before {
+    background-color: #b10b1f;
+}
+
+.woocommerce-message {
+    border-top: 3px solid #b10b1f;
+}
+
+.woocommerce a.button.alt,
+.woocommerce-page a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce-page button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce-page input.button.alt,
+.woocommerce #respond input#submit.alt,
+.woocommerce-page #respond input#submit.alt,
+.woocommerce #content input.button.alt,
+.woocommerce-page #content input.button.alt {
+    background: rgb(174, 10, 30); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(174, 10, 30, 1)), color-stop(100%, rgba(142, 5, 21, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ae0a1e', endColorstr = '#8e0515', GradientType = 0); /* IE6-9 */
+}
+
+.woocommerce a.button.alt:hover,
+.woocommerce-page a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce-page button.button.alt:hover,
+.woocommerce input.button.alt:hover,
+.woocommerce-page input.button.alt:hover,
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce-page #respond input#submit.alt:hover,
+.woocommerce #content input.button.alt:hover,
+.woocommerce-page #content input.button.alt:hover {
+    background: rgb(88, 9, 21); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(88, 9, 21, 1) 0%, rgba(72, 7, 17, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(88, 9, 21, 1)), color-stop(100%, rgba(72, 7, 17, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(88, 9, 21, 1) 0%, rgba(72, 7, 17, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(88, 9, 21, 1) 0%, rgba(72, 7, 17, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(88, 9, 21, 1) 0%, rgba(72, 7, 17, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(88, 9, 21, 1) 0%, rgba(72, 7, 17, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#580915', endColorstr = '#480711', GradientType = 0); /* IE6-9 */
+}
+
+
+.woocommerce .related ul.products li.product,
+.woocommerce-page .related ul.products li.product,
+.woocommerce .upsells.products ul.products li.product,
+.woocommerce-page .upsells.products ul.products li.product,
+.woocommerce .related ul li.product,
+.woocommerce-page .related ul li.product,
+.woocommerce .upsells.products ul li.product,
+.woocommerce-page .upsells.products ul li.product {
+    width:182px;
+}
+
+
+.woocommerce .cart-collaterals .cart_totals table,
+.woocommerce-page .cart-collaterals .cart_totals table {
+    float: right;
+}
+
+.woocommerce .summary h1 {
+    color: #000;
+}
+
+.woocommerce ul.products li.product {
+    background: url('../images/catalog-bg.png') no-repeat;
+    padding: 20px;
+    width: 182px;
+    margin-right: 23px;
+}
+
+.woocommerce ul.products li.product h3, .woocommerce-page ul.products li.product h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+}
+
+.woocommerce .product .price,
+.woocommerce ul.products li.product .price,
+.woocommerce-page ul.products li.product .price {
+    font-size: 26px !important;
+    line-height: 32px !important;
+    color: #b10b1f !important;
+    font-weight: bold;
+}
+
+.woocommerce .products .excerpt {
+    height: 135px;
+}
+
+.woocommerce .products .excerpt li {
+    list-style: disc;
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+.woocommerce a.add_to_cart_button,
+.woocommerce a.add_to_cart_button:hover {
+    background: url('../images/btn_details.png') no-repeat;
+    text-indent: -9999px;
+    border: 0;
+    display: block;
+    width: 94px;
+    height: 31px;
+    margin: 0 auto;
+    box-shadow: none;
+}
+
+.woocommerce button.single_add_to_cart_button,
+.woocommerce button.single_add_to_cart_button:hover {
+    background: url('../images/btn_add_to_cart.png') no-repeat !important;
+    text-indent: -9999px;
+    border: 0;
+    display: block;
+    width: 127px;
+    height: 39px;
+    margin: 0 auto;
+    box-shadow: none;
+}
+
+.single-product .quantity,
+.single-product .thumbnails,
+.woocommerce .product .related h2 {
+    display: none;
+}
+
+.woocommerce ul.products li.product.free .overlay {
+    background: url('../images/catalog-free.png');
+    width: 76px;
+    height: 76px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+.woocommerce ul.products li.product.upgrade .overlay {
+    background: url('../images/catalog-upgrade.png');
+    width: 76px;
+    height: 76px;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+}
+
+.woocommerce ul.products li.product .categories {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    width: 30px;
+    height: 120px;
+}
+
+.woocommerce ul.products li.product .category {
+    background: url('../images/product-categories.png');
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.woocommerce ul.products li.product .category.additional-minutes {
+    background-position: 0 30px;
+}
+
+.woocommerce ul.products li.product .category.text-messaging-rates {
+    background-position: 0 60px;
+}
+
+.woocommerce ul.products li.product .category.unlimited {
+    background-position: 0 90px;
+}
+
+.woocommerce ul.product-categories {
+    overflow: hidden;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.woocommerce ul.product-categories li {
+    float: left;
+    list-style: none;
+    color: #b10b1f;
+    margin-right: 30px;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    line-height: 32px;
+    display: block;
+}
+
+.woocommerce ul.product-categories li.additional-minutes {
+    background-image: url('../images/product-category-minutes.png');
+}
+
+.woocommerce ul.product-categories li.lifeline-plans {
+    background-image: url('../images/product-category-lifeline.png');
+}
+
+.woocommerce ul.product-categories li.text-messaging-rates {
+    background-image: url('../images/product-category-text.png');
+}
+
+.woocommerce ul.product-categories li.unlimited {
+    background-image: url('../images/product-category-unlimited.png');
+}
+
+.woocommerce table.cart a.remove,
+.woocommerce-page table.cart a.remove,
+.woocommerce #content table.cart a.remove,
+.woocommerce-page #content table.cart a.remove {
+    color: #b10b1f;
+
+}
+
+.woocommerce .cross-sells .product .overlay,
+.woocommerce .cross-sells h2,
+.woocommerce .cross-sells .product .categories,
+.woocommerce .upsells  .product .overlay,
+.woocommerce .upsells  h2,
+.woocommerce .upsells  .product .categories{
+    display:none;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+	.home #content{
+		margin:0 !important;
+	}
+
+	#content{
+		margin:0 2% !important;
+	}
+
+	.woocommerce ul.products li.product {
+	    margin-right: 17px;
+	}
+
+	.woocommerce #content p{
+		width:90%;
+	}
+
+}

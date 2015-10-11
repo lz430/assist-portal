@@ -1,0 +1,90 @@
+<?php
+if (!function_exists('wp') && !empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVER['SCRIPT_FILENAME'])) {
+    die ('You do not have sufficient permissions to access this page!');
+}
+get_header();
+?>
+
+<div id="content">
+    <?php if (have_posts()) : ?>
+    <?php while (have_posts()) : the_post(); ?>
+        <div class="hidden-phone">
+            <div <?php post_class() ?> id="post-<?php the_ID(); ?>">
+                <?php the_content('Read the rest of this entry &raquo;'); ?>
+            </div>
+        </div>
+        <div class="enrollment-form">
+            <form action="/enrollment-form" method="post">
+                <h4>Get Your Free Cell Phone!</h4>
+                <input type="text" class="input-block-level" placeholder="Email Address" name="email"/>
+                <input type="text" class="input-block-level zip" placeholder="Zip Code" name="home-zip"/>
+
+                <input type="submit" class="submit" value="Enroll Now &raquo;"/>
+            </form>
+        </div>
+        <?php endwhile; ?>
+    <?php endif; ?>
+
+    <div  class="customer-actions row-fluid">
+        <div class="span3">
+            <a class="action enroll" href="<?=get_permalink(265)?>">
+                <div class="hidden-phone">
+                    <h4><strong>ENROLL</strong> in Lifeline Cell Phone Service</h4>
+                    <p>It only takes a few minutes to sign up.</p>
+                </div>
+                <strong>Enroll Now &raquo;</strong>
+            </a>
+        </div>
+        <div class="span3">
+            <a class="action login" href="http://assistwireless.com/dev/enrollment-form/">
+                <div class="hidden-phone">
+                    <h4><strong>LOGIN</strong> to Complete Your Enrollment</h4>
+                    <p>to receive Lifeline Cell Phone Service.</p>
+                </div>
+                <strong>Login Now &raquo;</strong>
+            </a>
+        </div>
+        <div class="span3">
+            <a class="action reload" href="https://assist.telcoprovider.com/oss/web/customerportal" target="_reload">
+                <div class="hidden-phone">
+                    <h4><strong>TOP UP</strong> My Minutes, Texts, & Data</h4>
+                    <p>Add more minutes, texts, and data.</p>
+                </div>
+                <strong style="display:inline-block;margin-top:3px">Reload Now &raquo;</strong>
+            </a>
+        </div>
+        <div class="span3">
+            <a class="action pay" href="https://assist.telcoprovider.com/oss/web/customerportal" target="_pay">
+                <div class="hidden-phone">
+                    <h4><strong>PAY</strong> My Bill</h4>
+                    <p>Pay your bill instantly online.</p>
+                </div>
+                <strong style="display:inline-block;margin-top:17px">Pay Now &raquo;</strong>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function closeViolator(){
+        jQuery('#violator').hide();
+    }
+
+
+
+</script>
+
+<div id="violator" >
+
+    <h1>Recieved a letter from USAC?</h1>
+
+    <p style="font-size:24px;font-weight:bold">Make sure Assist Wireless<br/> is your #1 choice!</p>
+
+    <a href="/why-assist"><img src="<?php bloginfo('template_url'); ?>/images/details.png" border="0"/></a> <br/>
+    <div style="text-align:right">
+    <a href="#" style="font-size:24px;color:black;font-weight:bold" onclick="closeViolator();">X</a>
+    </div>
+</div>
+
+<?php get_footer(); ?>
