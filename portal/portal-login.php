@@ -8,7 +8,7 @@ get_header();
   <div id="login" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <h1>Lifeline Cell Phone Service</h1>
     <p class="message"></p>
-  <form name="loginform" id="loginform" action="https://www.assistwireless.com/dev/wp-login.php" method="post">
+  <form name="loginform" id="loginform" action="http://ap.430designs.com/wp-login.php" method="post">
     <p>
       <label for="user_login">Username<br>
       <input type="text" name="log" id="user_login" aria-describedby="login_error" class="input" value="" size="20"></label>
