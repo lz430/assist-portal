@@ -74,5 +74,65 @@ function register_assist_admin_icons() {
 </style>
 <?php }
 
+    /* -------------------------------------- *\
+        Adding custom fields for registration
+    \* -------------------------------------- */
+    /**
+     * Add new register fields for WooCommerce registration.
+     *
+     * @return string Register fields HTML.
+     */
+    function wooc_extra_register_fields() {
+?>
+
+    <div class="clear"></div>
+
+    <p class="form-row form-row-wide">
+        <label for="reg_register_phone"><?php _e( 'Phone', 'woocommerce' ); ?> <span class="required">*</span></label>
+        <input type="text" class="input" name="register_phone" id="reg_register_phone" value="<?php if ( ! empty( $_POST['register_phone'] ) ) esc_attr_e( $_POST['register_phone'] ); ?>" />
+    </p>
+
+    <?php
+}
+
+add_action( 'woocommerce_register_form', 'wooc_extra_register_fields' );
+
+
+/**
+ * Validate the extra register fields.
+ *
+ * @param  string $username          Current username.
+ * @param  string $email             Current email.
+ * @param  object $validation_errors WP_Error object.
+ *
+ * @return void
+ */
+function wooc_validate_extra_register_fields( $username, $email, $validation_errors ) {
+    if ( isset( $_POST['register_phone'] ) && empty( $_POST['register_phone'] ) ) {
+        $validation_errors->add( 'register_phone_error', __( '<strong>Error</strong>: Phone is required!.', 'woocommerce' ) );
+    }
+}
+
+add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 10, 3 );
+
+
+
+
+/**
+ * Save the extra register fields.
+ *
+ * @param  int  $customer_id Current customer ID.
+ *
+ * @return void
+ */
+function wooc_save_extra_register_fields( $customer_id ) {
+    if ( isset( $_POST['register_phone'] ) ) {
+        // WooCommerce billing phone
+        update_user_meta( $customer_id, 'register_phone', sanitize_text_field( $_POST['register_phone'] ) );
+    }
+}
+
+add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
+
 
 ?>
