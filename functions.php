@@ -111,12 +111,38 @@ function wooc_validate_extra_register_fields( $username, $email, $validation_err
     if ( isset( $_POST['register_phone'] ) && empty( $_POST['register_phone'] ) ) {
         $validation_errors->add( 'register_phone_error', __( '<strong>Error</strong>: Phone is required!.', 'woocommerce' ) );
     }
+
+    if ( isset( $_POST['register_phone'] ) ) {
+        include_once(TEMPLATEPATH . "/portal/api/Api.php");
+        include_once(TEMPLATEPATH . "/portal/api/Setting.php");
+        include_once(TEMPLATEPATH . "/portal/api/RequestParams.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_Base.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_CustomerProfile.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_GetAirtimeBalance.php");
+        $Api = new Api();
+        $requestParams = new requestParams();
+        $BQ = new BQ_CustomerProfile();
+
+        $BQ->set_CustomerMdn($_POST['register_phone']);
+
+        $requestParams->id = Setting::CLEC_ID;
+        $requestParams->firstName = Setting::CLEC_FIRSTNAME;
+        $requestParams->lastName = Setting::CLEC_LASTNAME;
+        $requestParams->details = $BQ;
+        $request = $Api->buildRequest($requestParams);
+        $Api->callAPI(Setting::URL, $request);
+
+        $BQ->set_response($Api->response);
+
+        if (!$BQ->isValidCustomer()) {
+            $validation_errors->add( 'register_phone_error', __( 'Not a valid Assist Wireless phone number.', 'woocommerce' ) );
+        } else {
+            $_SESSION['customerId'] = $BQ->get_customerId();
+        }
+    }
 }
 
 add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 10, 3 );
-
-
-
 
 /**
  * Save the extra register fields.
