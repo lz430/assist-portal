@@ -1049,7 +1049,8 @@
 
 
 #login{margin:0 auto;}
-.portal-header{}
+.portal-header .account-number{text-align: right;}
+
 .portal-header h2, .portal-header h4{margin:0;}
 
 .account-summary{background: #EBECED;}
@@ -1162,6 +1163,9 @@ body{background: red !important;}
 #menu-portal-menu.sf-js-enabled li ul li:last-child {
     border-radius:0 0px 5px 5px;
 }
+
+
+
 
 /* -------------------------------------- *\
     Account Usage Summary

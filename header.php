@@ -86,7 +86,7 @@
                             </a>
                             <div class="nav-collapse collapse">
                                 <?php wp_nav_menu(
-                            array(  'theme_location' => 'portal-menu',
+                            array(  'theme_location' => 'header-menu',
                                     'container_class'=>'nav',
                                     'menu_id' => 'navbar-menu-header-menu')); ?>
                             </div>
@@ -102,5 +102,5 @@
             </header>
             <div class="clearfix"></div>
             <div class="nav">
-                <?php wp_nav_menu(array('theme_location' => 'portal-menu')); ?>
+                <?php wp_nav_menu(array('theme_location' => 'header-menu', 'menu_id' => 'menu-header-menu')); ?>
             </div>

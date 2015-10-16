@@ -3,7 +3,7 @@
   * * Template Name: Portal Dashboard 
   * * @package assist-portal 
   */
-  get_header('portal');
+  get_header();
   // TODO: Why doesn't this work?
   // Check in various folders if autoload doesn't work
   function __autoload($class_name) {
@@ -33,10 +33,10 @@
   $_SESSION["remainingText"] = $BQ->get_remainingText();
 ?>
     <div class="portal-header">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 account-name">
             <h2>Hello <?php echo $_SESSION["fullname"] ?></h2>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 account-number">
             <h4>Account Number: <?php echo $_SESSION["customerId"] ?> </h4>
         </div>
     </div>
@@ -48,14 +48,17 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 voice-balance summary-box">
                 <i class="fa fa-mobile"></i>
                 <h3>Voice</h3>
+                <div class="gauge-minutes"></div>
                 <h4><?php echo $_SESSION["remainingMinutes"] ?></h4>
                 <a href="#" class="btn btn-primary top-up-voice">Top Up</a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-balance summary-box"> <i class="fa fa-comments"></i>
                 <h3>Text</h3>
+                <div class="gauge-text"></div>
                 <h4><?php echo $_SESSION["remainingText"] ?></h4> <a href="#" class="btn btn-primary top-up-text">Top Up</a> </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 data-balance summary-box"> <i class="fa fa-rss"></i>
-                <h3>Voice</h3>
+                <h3>Data</h3>
+                <div class="gauge-data"></div>
                 <h4><?php echo $_SESSION["remainingData"] ?></h4> <a href="#" class="btn btn-primary top-up-data">Top Up</a> </div>
         </div>
         <!-- end row-->
@@ -86,4 +89,80 @@
         <!-- end row-->
     </div>
     <!-- end container-->
+
+    <script>
+      jQuery(document).ready(function(){
+        var remainingMinutes = "<?php echo $_SESSION['remainingMinutes'] ?>";
+        var remainingText    = "<?php echo $_SESSION['remainingText'] ?>";
+        var remainingData    = "<?php echo $_SESSION['remainingData'] ?>";
+        
+        jQuery('.gauge-minutes').kumaGauge({
+            value : remainingMinutes,
+            fill : '0-#1cb42f:0-#fdbe37:50-#fa4133:100',
+            animationSpeed : 1000,
+            gaugeBackground : '#333',
+            gaugeWidth : 30,
+            showNeedle : false,
+            min: 0,
+            max: 10000,
+            label : {
+                    display : false,
+                    left : 'Min',
+                    right : 'Max',
+                    fontFamily : 'Helvetica',
+                    fontColor : '#333',
+                    fontSize : '11',
+                    fontWeight : 'bold'
+                }, 
+            valueLabel: {
+              display:false
+            }
+          });
+        jQuery('.gauge-text').kumaGauge({
+            value : remainingMinutes,
+            fill : '0-#1cb42f:0-#fdbe37:50-#fa4133:100',
+            animationSpeed : 1000,
+            gaugeBackground : '#333',
+            gaugeWidth : 30,
+            showNeedle : false,
+            min: 0,
+            max: 10000,
+            label : {
+                    display : false,
+                    left : 'Min',
+                    right : 'Max',
+                    fontFamily : 'Helvetica',
+                    fontColor : '#333',
+                    fontSize : '11',
+                    fontWeight : 'bold'
+                }, 
+            valueLabel: {
+              display:false
+            }
+          });
+        jQuery('.gauge-data').kumaGauge({
+            value : remainingData,
+            fill : '0-#1cb42f:0-#fdbe37:50-#fa4133:100',
+            animationSpeed : 1000,
+            gaugeBackground : '#333',
+            gaugeWidth : 30,
+            showNeedle : false,
+            min: 0,
+            max: 10000,
+            label : {
+                    display : false,
+                    left : 'Min',
+                    right : 'Max',
+                    fontFamily : 'Helvetica',
+                    fontColor : '#333',
+                    fontSize : '11',
+                    fontWeight : 'bold'
+                }, 
+            valueLabel: {
+              display:false
+            }
+          });
+      });
+    </script>
+
     <?php get_footer(); ?>

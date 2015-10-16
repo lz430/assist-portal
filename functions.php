@@ -23,10 +23,11 @@ add_action('wp_enqueue_scripts', 'assist_scripts_styles');
 function assist_portal_scripts_styles() {
     wp_enqueue_style('portal-style', get_template_directory_uri().'/css/portal.css', array(), rand(111,9999));
     wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array(), rand(111,9999));
+    wp_enqueue_style('gauge-style', 'http://www.jqueryscript.net/demo/jQuery-Plugin-To-Generate-Animated-Dynamic-Gauges-dynameter/css/jquery.dynameter.css', array(), rand(111,9999));
 
-    wp_enqueue_style('chart-style', get_template_directory_uri().'-child/css/horizBarChart.css', array(), rand(111,9999));
-    // wp_enqueue_script('charts-script', get_template_directory_uri().'-child/js/jquery.canvasjs.min.js', array(), rand(111,9999));
-    // wp_enqueue_script('portal', get_template_directory_uri().'-child/js/portal.js', array(), rand(111,9999));
+    wp_enqueue_script('gauge-script', 'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js', array(), rand(111,9999));
+    wp_enqueue_script('gauges', get_template_directory_uri().'/js/kuma-gauge.jquery.js', array(), rand(111,9999));
+    wp_enqueue_script('portal-scripts', get_template_directory_uri().'/js/portal.js', array(), rand(111,9999));
 }
 
 add_action('wp_enqueue_scripts','assist_portal_scripts_styles');
@@ -111,12 +112,38 @@ function wooc_validate_extra_register_fields( $username, $email, $validation_err
     if ( isset( $_POST['register_phone'] ) && empty( $_POST['register_phone'] ) ) {
         $validation_errors->add( 'register_phone_error', __( '<strong>Error</strong>: Phone is required!.', 'woocommerce' ) );
     }
+
+    if ( isset( $_POST['register_phone'] ) ) {
+        include_once(TEMPLATEPATH . "/portal/api/Api.php");
+        include_once(TEMPLATEPATH . "/portal/api/Setting.php");
+        include_once(TEMPLATEPATH . "/portal/api/RequestParams.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_Base.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_CustomerProfile.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_GetAirtimeBalance.php");
+        $Api = new Api();
+        $requestParams = new requestParams();
+        $BQ = new BQ_CustomerProfile();
+
+        $BQ->set_CustomerMdn($_POST['register_phone']);
+
+        $requestParams->id = Setting::CLEC_ID;
+        $requestParams->firstName = Setting::CLEC_FIRSTNAME;
+        $requestParams->lastName = Setting::CLEC_LASTNAME;
+        $requestParams->details = $BQ;
+        $request = $Api->buildRequest($requestParams);
+        $Api->callAPI(Setting::URL, $request);
+
+        $BQ->set_response($Api->response);
+
+        if (!$BQ->isValidCustomer()) {
+            $validation_errors->add( 'register_phone_error', __( 'Not a valid Assist Wireless phone number.', 'woocommerce' ) );
+        } else {
+            $_SESSION['customerId'] = $BQ->get_customerId();
+        }
+    }
 }
 
 add_action( 'woocommerce_register_post', 'wooc_validate_extra_register_fields', 10, 3 );
-
-
-
 
 /**
  * Save the extra register fields.
