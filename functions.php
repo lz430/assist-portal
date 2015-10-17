@@ -135,9 +135,15 @@ function wooc_validate_extra_register_fields( $username, $email, $validation_err
 
         $BQ->set_response($Api->response);
 
+        // Must wrap certain properties/methods with print_r in order to "see" them
+        // echo print_r($BQ->get_response());
+        // die();
+
         if (!$BQ->isValidCustomer()) {
             $validation_errors->add( 'register_phone_error', __( 'Not a valid Assist Wireless phone number.', 'woocommerce' ) );
         } else {
+            // HACK
+            $BQ->update_customerId();
             $_SESSION['customerId'] = $BQ->get_customerId();
         }
     }
@@ -161,5 +167,17 @@ function wooc_save_extra_register_fields( $customer_id ) {
 
 add_action( 'woocommerce_created_customer', 'wooc_save_extra_register_fields' );
 
+// Hook into user data immediately after successful registration
+function post_registration_update_acf( $user_id ) {
+    if ( isset( $_SESSION['customerId'] ) ) {
+        // Update Customer ID ACF field (field key = field_561b01c3cecfb)
+        update_field('customer_id', (string)$_SESSION['customerId'], 'user_'.$user_id);
+
+        // TODO: Why does using the field key not work?
+        // update_field('field_561b01c3cecfb', 'ABC-field-key', 'user_29');
+    }
+}
+
+add_action( 'user_register', 'post_registration_update_acf', 10, 1 );
 
 ?>
