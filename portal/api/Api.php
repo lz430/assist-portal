@@ -62,7 +62,15 @@ class Api
 		$result = file_get_contents($url, false, $context);
 
 		$this->response = new SimpleXMLElement($result);
-		// echo var_export($this->response, true);
+
+        if (false) {
+            echo "<pre>";
+            echo var_export($request, true);
+            echo "<br/>";
+            echo var_export($this->response->response[0]->invoice->taxTotal, true);
+            echo "</pre>";
+        }
+
         return;
     }
 }

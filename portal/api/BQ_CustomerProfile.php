@@ -48,6 +48,10 @@ class BQ_CustomerProfile extends BQ_Base {
         $this->customerId = $value;
     }
     
+    function update_customerId() {
+        $this->set_customerId($this->response->response[0]->customer[0]->customerId);
+    }
+
     function get_customerId() {
         return $this->customerId;
     }
@@ -207,10 +211,6 @@ class BQ_CustomerProfile extends BQ_Base {
     public function get_fullname() {
     	return $this->response->response[0]->customer[0]->firstName . ' ' . $this->response->response[0]->customer[0]->lastName;
     }
-
-    // public function get_customerId() {
-    // 	return $this->response->response[0]->customer[0]->customerId;
-    // }
 
     public function get_balance() {
         $balance = $this->response->response[0]->customer[0]->balance;

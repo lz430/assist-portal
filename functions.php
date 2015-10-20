@@ -26,7 +26,7 @@ function assist_portal_scripts_styles() {
     wp_enqueue_style('gauge-style', 'http://www.jqueryscript.net/demo/jQuery-Plugin-To-Generate-Animated-Dynamic-Gauges-dynameter/css/jquery.dynameter.css', array(), rand(111,9999));
 
     wp_enqueue_script('gauge-script', 'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js', array(), rand(111,9999));
-    wp_enqueue_script('gauges', get_template_directory_uri().'/js/kuma-gauge.jquery.js', array(), rand(111,9999));
+    wp_enqueue_script('gauges', get_template_directory_uri().'/js/justgage-1.1.0.min.js', array(), rand(111,9999));
     wp_enqueue_script('portal-scripts', get_template_directory_uri().'/js/portal.js', array(), rand(111,9999));
 }
 
@@ -180,4 +180,130 @@ function post_registration_update_acf( $user_id ) {
 
 add_action( 'user_register', 'post_registration_update_acf', 10, 1 );
 
-?>
+// Hook after user successfully logs in
+function post_login_get_acf($user_login, $user) {
+    if ( false ) {
+
+        // TODO: Why do I need to use the field key, and not the field name, in this instance?
+        // Get value in Customer ID ACF field (field key = field_561b01c3cecfb)
+        $customerId = get_field('field_561b01c3cecfb', 'user_' . $user->ID);
+
+        include_once(TEMPLATEPATH . "/portal/api/Api.php");
+        include_once(TEMPLATEPATH . "/portal/api/Setting.php");
+        include_once(TEMPLATEPATH . "/portal/api/RequestParams.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_Base.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_CustomerProfile.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_GetAirtimeBalance.php");
+        $Api = new Api();
+        $requestParams = new requestParams();
+        $BQ = new BQ_CustomerProfile();
+        $BQ->set_CustomerId($customerId);
+
+        $requestParams->id = Setting::CLEC_ID;
+        $requestParams->firstName = Setting::CLEC_FIRSTNAME;
+        $requestParams->lastName = Setting::CLEC_LASTNAME;
+        $requestParams->details = $BQ;
+        $request = $Api->buildRequest($requestParams);
+        $Api->callAPI(Setting::URL, $request);
+        $BQ->set_response($Api->response);
+
+        WC()->session->set('fullname', $BQ->get_fullName());
+        WC()->session->set('customerId', $customerId); // NOTE: Not $BQ->get_customerId()
+        WC()->session->set('balance', $BQ->get_balance());
+        WC()->session->set('balancePastDue', $BQ->get_balancePastDue());
+
+        // TODO: Fix next 2 lines
+        // WC()->session->set('planName', $BQ->get_planName());
+        // WC()->session->set('planPrice', $BQ->get_planPrice());
+        // WC()->session->set('mdn', $BQ->get_telephoneNumber1());
+        // WC()->session->set('daysLeft', $BQ->get_daysLeft());
+    }
+}
+
+add_action( 'wp_login', 'post_login_get_acf', 10, 2 );
+
+function mysite_woocommerce_payment_complete( $order_id ) {
+	error_log( "Payment has been received for order $order_id", 1, "james@agilemediaventures.com" );
+}
+
+add_action( 'woocommerce_payment_complete', 'mysite_woocommerce_payment_complete' );
+
+function mysite_hold( $order_id ) {
+    error_log( "Order $order_id is on hold", 1, "james@agilemediaventures.com" );
+}
+
+add_action( 'woocommerce_order_status_on-hold', 'mysite_hold');
+
+// TODO: Call BeQuick API to calculate sales tax
+function custom_add_tax( $instance ) {
+	if ( is_admin() && ! defined( 'DOING_AJAX' ) )
+		return;
+
+    global $woocommerce;
+
+    $fee = 0;
+    foreach ( $woocommerce->cart->get_cart() as $cart_item_key => $values ) {
+    	$product = new WC_Product( $values['product_id'] );
+
+    	$sku = $product->get_sku();
+    	$qty = $values['quantity'];
+
+        include_once(TEMPLATEPATH . "/portal/api/Api.php");
+        include_once(TEMPLATEPATH . "/portal/api/Setting.php");
+        include_once(TEMPLATEPATH . "/portal/api/RequestParams.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_Base.php");
+        include_once(TEMPLATEPATH . "/portal/api/BQ_CustomerManualInvoiceQuoteRequest.php");
+        $Api = new Api();
+        $requestParams = new requestParams();
+        $BQ = new BQ_CustomerManualInvoiceQuoteRequest();
+
+        // $BQ->set_billingProfileId('3');
+        $BQ->set_customerId(WC()->session->get('customerId'));
+
+        $skus = array($sku);
+        $BQ->set_Skus($skus);
+
+        $requestParams->id = Setting::CLEC_ID;
+        $requestParams->firstName = Setting::CLEC_FIRSTNAME;
+        $requestParams->lastName = Setting::CLEC_LASTNAME;
+        $requestParams->details = $BQ;
+        $request = $Api->buildRequest($requestParams);
+        $Api->callAPI(Setting::URL, $request);
+
+        $BQ->set_response($Api->response);
+        // echo '<pre>' . var_export( $BQ->get_response(), true ) . '</pre>';
+        // echo '<pre>' . var_export( $BQ->get_tax_total(), true ) . '</pre>';
+        $fee += $BQ->get_tax_total();
+    }
+
+    // echo '<pre>' . var_export( $woocommerce->cart->get_cart(), true ) . '</pre>';
+    // echo '<pre>' . var_export( $instance, true ) . '</pre>';
+    $woocommerce->cart->add_fee( 'Sales Tax', $fee, true, 'standard' );
+
+	return $instance;
+}
+
+add_action( 'woocommerce_cart_calculate_fees', 'custom_add_tax' );
+
+function add_your_gateway_class( $methods ) {
+    $methods[] = 'WC_Gateway_BeQuick'; 
+    // echo var_dump($methods);
+    return $methods;
+}
+
+add_filter( 'woocommerce_payment_gateways', 'add_your_gateway_class', 10, 1 );
+
+// Custom payment gateway
+// function init_your_gateway_class() {
+//     class WC_Gateway_Your_Gateway extends WC_Payment_Gateway {}
+// }
+
+// add_action( 'plugins_loaded', 'init_your_gateway_class' );
+
+// function add_your_gateway_class( $methods ) {
+//     $methods[] = 'WC_Gateway_Your_Gateway'; 
+//     return $methods;
+// }
+
+// add_filter( 'woocommerce_payment_gateways', 'add_your_gateway_class' );
+
