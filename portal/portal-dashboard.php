@@ -55,11 +55,11 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-balance summary-box"> <i class="fa fa-comments"></i>
                 <h3>Text</h3>
-                <div class="gauge-text"></div>
+                <div id="gauge-text"></div>
                 <h4><?php echo WC()->session->get("remainingText") ?></h4> <a href="#" class="btn btn-primary top-up-text">Top Up</a> </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 data-balance summary-box"> <i class="fa fa-rss"></i>
                 <h3>Data</h3>
-                <div class="gauge-data"></div>
+                <div id="gauge-data"></div>
                 <h4><?php echo WC()->session->get("remainingData") ?></h4> <a href="#" class="btn btn-primary top-up-data">Top Up</a> </div>
         </div>
         <!-- end row-->
@@ -96,26 +96,89 @@
         var remainingMinutes = "<?php echo WC()->session->get('remainingMinutes') ?>";
         var remainingText    = "<?php echo WC()->session->get('remainingText') ?>";
         var remainingData    = "<?php echo WC()->session->get('remainingData') ?>";
+
+        /* -------------------------------------- *\
+            Convert everything to numbers
+        \* -------------------------------------- */
+        remainingMinutes = remainingMinutes.replace(/\,/g,'');
+        remainingMinutes = parseInt(remainingMinutes, 10);
+
+        remainingText = remainingText.replace(/\,/g,'');
+        remainingText = parseInt(remainingText, 10);
+
+        remainingData = remainingData.replace(/\,/g,'');
+        remainingData = parseInt(remainingData, 10);
+
+        console.log(remainingMinutes);
         
         var gg1 = new JustGage({
           id: "gauge-minutes",
           value : remainingMinutes,
           min: 0,
-          max: 100,
-          decimals: 2,
+          max: 250,
+          decimals: 0,
+          hideInnerShadow: true,
           gaugeWidthScale: 0.8,
           customSectors: [{
-            color : "#ff0000",
+            color : "#F44336",
             lo : 0,
-            hi : 25
-          },{
-            color : "#00ff00",
-            lo : 25,
             hi : 50
+          },{
+            color : "#FFEB3B",
+            lo : 49,
+            hi : 149
           }, {
-            color : "#0000ff",
-            lo : 50,
+            color : "#4CAF50",
+            lo : 150,
+            hi : 250
+          }],
+          counter: true
+        });
+
+        var gg2 = new JustGage({
+          id: "gauge-text",
+          value : remainingText,
+          min: 0,
+          max: 250,
+          decimals: 0,
+          hideInnerShadow: true,
+          gaugeWidthScale: 0.8,
+          customSectors: [{
+            color : "#F44336",
+            lo : 0,
+            hi : 50
+          },{
+            color : "#FFEB3B",
+            lo : 49,
+            hi : 149
+          }, {
+            color : "#4CAF50",
+            lo : 150,
+            hi : 250
+          }],
+          counter: true
+        });
+
+        var gg3 = new JustGage({
+          id: "gauge-data",
+          value : remainingData,
+          min: 0,
+          max: 500,
+          decimals: 0,
+          hideInnerShadow: true,
+          gaugeWidthScale: 0.8,
+          customSectors: [{
+            color : "#F44336",
+            lo : 0,
             hi : 100
+          },{
+            color : "#FFEB3B",
+            lo : 101,
+            hi : 249
+          }, {
+            color : "#4CAF50",
+            lo : 250,
+            hi : 500
           }],
           counter: true
         });
