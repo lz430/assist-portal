@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="google-site-verification" content="eqC11EZVvKSqL_v2nldcQCvtmCNTnXA_oxFR1CP5_So" />
     <title>
@@ -28,79 +27,111 @@
         });
     </script>-->
 </head>
-
 <body <?php body_class(); ?>>
     <?php 
-        include_once(TEMPLATEPATH . "/portal/api/Api.php");
-        include_once(TEMPLATEPATH . "/portal/api/Setting.php");
-        include_once(TEMPLATEPATH . "/portal/api/RequestParams.php");
-        include_once(TEMPLATEPATH . "/portal/api/BQ_Base.php");
-        include_once(TEMPLATEPATH . "/portal/api/BQ_CustomerProfile.php");
-        include_once(TEMPLATEPATH . "/portal/api/BQ_GetAirtimeBalance.php");
-        $Api = new Api();
-        $requestParams = new requestParams();
-        $BQ = new BQ_CustomerProfile();
-
-        // $user_ID = get_current_user_id();
-        // $customerId = get_field('customer_id', 'user_' . strval($user_ID));
-
-        // TODO: Remove default value
-        if ($customerId) {
-            $BQ->set_CustomerId($customerId);
-        } else {
-            $BQ->set_CustomerId('11114262');
+        if (false) {
+            if( !is_admin() ) {
+                // Set
+                // $data = 'Hello, world!';
+                // WC()->session->set('key', $data);
+                // Get
+                echo "<pre>";
+                // echo(WC()->session->get('key'));
+                echo(print_r(WC()->session));
+                echo "</pre>";
+            }
         }
-
-        $requestParams->id = Setting::CLEC_ID;
-        $requestParams->firstName = Setting::CLEC_FIRSTNAME;
-        $requestParams->lastName = Setting::CLEC_LASTNAME;
-        $requestParams->details = $BQ;
-        $request = $Api->buildRequest($requestParams);
-        $Api->callAPI(Setting::URL, $request);
-        $BQ->set_response($Api->response);
-        $_SESSION['fullname'] = $BQ->get_fullname();
-        $_SESSION['customerId'] = $BQ->get_customerId();
-        $_SESSION['balance'] = $BQ->get_balance();
-        $_SESSION['balancePastDue'] = $BQ->get_balancePastDue();
-        $_SESSION['planName'] = $BQ->get_planName();
-        $_SESSION['planPrice'] = $BQ->get_planPrice();
-        $_SESSION['mdn'] = $BQ->get_telephoneNumber1();
-        $_SESSION['daysLeft'] = $BQ->get_daysLeft();
-
+        $user_ID = get_current_user_id();
+        $customerId = get_field('field_561b01c3cecfb', 'user_' . $user_ID);
+        $session_customerId = WC()->session->get('customerId');
+        // If the sessions doesn't already exist... go get it from API
+        if ($customerId && $session_customerId == '') {
+            include_once(TEMPLATEPATH . "/portal/api/Api.php");
+            include_once(TEMPLATEPATH . "/portal/api/Setting.php");
+            include_once(TEMPLATEPATH . "/portal/api/RequestParams.php");
+            include_once(TEMPLATEPATH . "/portal/api/BQ_Base.php");
+            include_once(TEMPLATEPATH . "/portal/api/BQ_CustomerProfile.php");
+            include_once(TEMPLATEPATH . "/portal/api/BQ_GetAirtimeBalance.php");
+            $Api = new Api();
+            $requestParams = new requestParams();
+            $BQ = new BQ_CustomerProfile();
+            $BQ->set_CustomerId($customerId);
+            $requestParams->id = Setting::CLEC_ID;
+            $requestParams->firstName = Setting::CLEC_FIRSTNAME;
+            $requestParams->lastName = Setting::CLEC_LASTNAME;
+            $requestParams->details = $BQ;
+            $request = $Api->buildRequest($requestParams);
+            $Api->callAPI(Setting::URL, $request);
+            $BQ->set_response($Api->response);
+            WC()->session->set('fullname', $BQ->get_fullname());
+            WC()->session->set('customerId', $customerId); // $BQ->get_customerId()
+            WC()->session->set('balance', $BQ->get_balance());
+            WC()->session->set('balancePastDue', $BQ->get_balancePastDue());
+            // WC()->session->set('planName', $BQ->get_planName());
+            // WC()->session->set('planPrice', $BQ->get_planPrice());
+            WC()->session->set('mdn', $BQ->get_telephoneNumber1());
+            WC()->session->set('daysLeft', $BQ->get_daysLeft());
+            $_SESSION['fullname'] = WC()->session->get('fullname');
+            $_SESSION['customerId'] = WC()->session->get('customerId');
+            $_SESSION['balance'] = WC()->session->get('balance');
+            $_SESSION['balancePastDue'] = WC()->session->get('balancePastDue');
+            $_SESSION['planName'] = "TBD";
+            $_SESSION['planPrice'] = "TBD";
+            $_SESSION['mdn'] = WC()->session->get('mdn');
+            $_SESSION['daysLeft'] = WC()->session->get('daysLeft');
+            // $_SESSION['fullname'] = $BQ->get_fullname();
+            // $_SESSION['customerId'] = $BQ->get_customerId();
+            // $_SESSION['balance'] = $BQ->get_balance();
+            // $_SESSION['balancePastDue'] = $BQ->get_balancePastDue();
+            // $_SESSION['planName'] = $BQ->get_planName();
+            // $_SESSION['planPrice'] = $BQ->get_planPrice();
+            // $_SESSION['mdn'] = $BQ->get_telephoneNumber1();
+            // $_SESSION['daysLeft'] = $BQ->get_daysLeft();
+        }
      ?>
         <div id="page" class="container">
             <header id="header">
-                <a class="brand pull-left hidden-phone" href="<?php bloginfo('url'); ?>">
+                <a class="brand col-lg-2 col-md-2 col-sm-2 col-xs-12" href="<?php bloginfo('url'); ?>">
                     <?=bloginfo('name')?>
                 </a>
-                <div class="navbar navbar-static-top hidden-desktop hidden-tablet">
+                <div class="customer-name pull-right col-xs12">
+                    <?php
+                        wp_nav_menu(array(
+                        'theme_location' => 'upper-menu',
+                        'container_class'=>'menu-top-menu-container',
+                        'menu_id' => 'menu-top-menu')); 
+                     ?>
+                     <div class="contact pull-right customer-service">
+                        <label>Toll Free Sales and Customer Service</label>
+                        <a href="tel:8553927747">1-855-392-7747</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+               <!--  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2><?php echo WC()->session->get('fullname')?></h2>
+                    <p><a href="/customer-logout" class="log">Log Out</a></p>
+                </div> -->
+               <!--  <div class="navbar navbar-static-top">
                     <div class="navbar-inner">
                         <div class="container">
-                            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
-                            </a>
-                            <a class="brand" href="<?php bloginfo('url'); ?>">
-                                <?=bloginfo('name')?>
-                            </a>
-                            <div class="nav-collapse collapse">
+                              </button>
+                            <div class="collapse navbar-collapse">
                                 <?php wp_nav_menu(
-                            array(  'theme_location' => 'header-menu',
-                                    'container_class'=>'nav',
-                                    'menu_id' => 'navbar-menu-header-menu')); ?>
+                                    array(  'theme_location' => 'header-menu',
+                                    'container_class'=>'nav navbar-nav',
+                                    'menu_id' => 'menu-header-menu')); 
+                                ?>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="clearfix hidden-desktop hidden-tablet"></div>
                 <div class="contact pull-left sales"></div>
-                <div class="customer-name pull-right">
-                    <h2><?php echo $_SESSION['fullname']?></h2>
-                    <h5><a href="/customer-logout" class="log">Log Out</a></h5>
-                </div>
+                
             </header>
             <div class="clearfix"></div>
-            <div class="nav">
-                <?php wp_nav_menu(array('theme_location' => 'header-menu', 'menu_id' => 'menu-header-menu')); ?>
-            </div>

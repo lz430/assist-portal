@@ -53,7 +53,6 @@
     padding-left: 10px;
     padding-right: 10px
 }
-
 .col-xs-1,
 .col-xs-10,
 .col-xs-11,
@@ -68,211 +67,159 @@
 .col-xs-9 {
     float: left
 }
-
 .col-xs-12 {
     width: 100%
 }
-
 .col-xs-11 {
     width: 91.66666667%
 }
-
 .col-xs-10 {
     width: 83.33333333%
 }
-
 .col-xs-9 {
     width: 75%
 }
-
 .col-xs-8 {
     width: 66.66666667%
 }
-
 .col-xs-7 {
     width: 58.33333333%
 }
-
 .col-xs-6 {
     width: 50%
 }
-
 .col-xs-5 {
     width: 41.66666667%
 }
-
 .col-xs-4 {
     width: 33.33333333%
 }
-
 .col-xs-3 {
     width: 25%
 }
-
 .col-xs-2 {
     width: 16.66666667%
 }
-
 .col-xs-1 {
     width: 8.33333333%
 }
-
 .col-xs-pull-12 {
     right: 100%
 }
-
 .col-xs-pull-11 {
     right: 91.66666667%
 }
-
 .col-xs-pull-10 {
     right: 83.33333333%
 }
-
 .col-xs-pull-9 {
     right: 75%
 }
-
 .col-xs-pull-8 {
     right: 66.66666667%
 }
-
 .col-xs-pull-7 {
     right: 58.33333333%
 }
-
 .col-xs-pull-6 {
     right: 50%
 }
-
 .col-xs-pull-5 {
     right: 41.66666667%
 }
-
 .col-xs-pull-4 {
     right: 33.33333333%
 }
-
 .col-xs-pull-3 {
     right: 25%
 }
-
 .col-xs-pull-2 {
     right: 16.66666667%
 }
-
 .col-xs-pull-1 {
     right: 8.33333333%
 }
-
 .col-xs-pull-0 {
     right: auto
 }
-
 .col-xs-push-12 {
     left: 100%
 }
-
 .col-xs-push-11 {
     left: 91.66666667%
 }
-
 .col-xs-push-10 {
     left: 83.33333333%
 }
-
 .col-xs-push-9 {
     left: 75%
 }
-
 .col-xs-push-8 {
     left: 66.66666667%
 }
-
 .col-xs-push-7 {
     left: 58.33333333%
 }
-
 .col-xs-push-6 {
     left: 50%
 }
-
 .col-xs-push-5 {
     left: 41.66666667%
 }
-
 .col-xs-push-4 {
     left: 33.33333333%
 }
-
 .col-xs-push-3 {
     left: 25%
 }
-
 .col-xs-push-2 {
     left: 16.66666667%
 }
-
 .col-xs-push-1 {
     left: 8.33333333%
 }
-
 .col-xs-push-0 {
     left: auto
 }
-
 .col-xs-offset-12 {
     margin-left: 100%
 }
-
 .col-xs-offset-11 {
     margin-left: 91.66666667%
 }
-
 .col-xs-offset-10 {
     margin-left: 83.33333333%
 }
-
 .col-xs-offset-9 {
     margin-left: 75%
 }
-
 .col-xs-offset-8 {
     margin-left: 66.66666667%
 }
-
 .col-xs-offset-7 {
     margin-left: 58.33333333%
 }
-
 .col-xs-offset-6 {
     margin-left: 50%
 }
-
 .col-xs-offset-5 {
     margin-left: 41.66666667%
 }
-
 .col-xs-offset-4 {
     margin-left: 33.33333333%
 }
-
 .col-xs-offset-3 {
     margin-left: 25%
 }
-
 .col-xs-offset-2 {
     margin-left: 16.66666667%
 }
-
 .col-xs-offset-1 {
     margin-left: 8.33333333%
 }
-
 .col-xs-offset-0 {
     margin-left: 0
 }
-
 @media (min-width:768px) {
     .col-sm-1,
     .col-sm-10,
@@ -442,7 +389,6 @@
         margin-left: 0
     }
 }
-
 @media (min-width:992px) {
     .col-md-1,
     .col-md-10,
@@ -612,7 +558,6 @@
         margin-left: 0
     }
 }
-
 @media (min-width:1200px) {
     .col-lg-1,
     .col-lg-10,
@@ -782,7 +727,6 @@
         margin-left: 0
     }
 }
-
 .clearfix:after,
 .clearfix:before,
 .container-fluid:after,
@@ -794,36 +738,29 @@
     content: " ";
     display: table
 }
-
 .clearfix:after,
 .container-fluid:after,
 .container:after,
 .row:after {
     clear: both
 }
-
 .center-block {
     display: block;
     margin-left: auto;
     margin-right: auto
 }
-
 .pull-right {
     float: right!important
 }
-
 .pull-left {
     float: left!important
 }
-
 .hide {
     display: none!important
 }
-
 .show {
     display: block!important
 }
-
 .hidden,
 .visible-lg,
 .visible-lg-block,
@@ -843,11 +780,9 @@
 .visible-xs-inline-block {
     display: none!important
 }
-
 .invisible {
     visibility: hidden
 }
-
 .text-hide {
     font: 0/0 a;
     color: transparent;
@@ -855,19 +790,15 @@
     background-color: transparent;
     border: 0
 }
-
 .hidden {
     visibility: hidden!important
 }
-
 .affix {
     position: fixed
 }
-
 @-ms-viewport {
     width: device-width
 }
-
 @media (max-width:767px) {
     .visible-xs {
         display: block!important
@@ -892,7 +823,6 @@
         display: inline-block!important
     }
 }
-
 @media (min-width:768px) and (max-width:991px) {
     .visible-sm {
         display: block!important
@@ -917,7 +847,6 @@
         display: inline-block!important
     }
 }
-
 @media (min-width:992px) and (max-width:1199px) {
     .visible-md {
         display: block!important
@@ -942,7 +871,6 @@
         display: inline-block!important
     }
 }
-
 @media (min-width:1200px) {
     .visible-lg {
         display: block!important
@@ -967,35 +895,29 @@
         display: inline-block!important
     }
 }
-
 @media (max-width:767px) {
     .hidden-xs {
         display: none!important
     }
 }
-
 @media (min-width:768px) and (max-width:991px) {
     .hidden-sm {
         display: none!important
     }
 }
-
 @media (min-width:992px) and (max-width:1199px) {
     .hidden-md {
         display: none!important
     }
 }
-
 @media (min-width:1200px) {
     .hidden-lg {
         display: none!important
     }
 }
-
 .visible-print {
     display: none!important
 }
-
 @media print {
     .visible-print {
         display: block!important
@@ -1011,31 +933,25 @@
         display: table-cell!important
     }
 }
-
 .visible-print-block {
     display: none!important
 }
-
 @media print {
     .visible-print-block {
         display: block!important
     }
 }
-
 .visible-print-inline {
     display: none!important
 }
-
 @media print {
     .visible-print-inline {
         display: inline!important
     }
 }
-
 .visible-print-inline-block {
     display: none!important
 }
-
 @media print {
     .visible-print-inline-block {
         display: inline-block!important
@@ -1046,24 +962,16 @@
 }
 .center{text-align: center;}
 .row {margin-right: -15px !important;margin-left: -15px !important;}
-
-
 #login{margin:0 auto;}
 .portal-header .account-number{text-align: right;}
-
 .portal-header h2, .portal-header h4{margin:0;}
-
 .account-summary{background: #EBECED;}
 .account-summary .chart{width:95%;margin: 0;}
-
 #chartContainer{height:250px;width:100%;}
 .canvasjs-chart-credit{display: none;}
-
 /* -------------------------------------- *\
     Portal Nav
 \* -------------------------------------- */
-
-body{background: red !important;}
 #menu-portal-menu {
     margin: 10px 0;
     height:40px;
@@ -1163,10 +1071,7 @@ body{background: red !important;}
 #menu-portal-menu.sf-js-enabled li ul li:last-child {
     border-radius:0 0px 5px 5px;
 }
-
-
-
-
+.navbar-default{background-color: transparent;border:0;}
 /* -------------------------------------- *\
     Account Usage Summary
 \* -------------------------------------- */
@@ -1177,8 +1082,23 @@ body{background: red !important;}
 .account-balance-summary .summary-box h4{margin:5px 0;}
 .account-balance-summary .summary-box .fa{font-size:40px;}
 .summary-days-left{border-top:1px solid #999;border-bottom:1px solid #999;padding: 10px 0;text-align: center;margin: 10px 0 ;}
-
 .text-balance{border-left:1px solid #999;border-right: 1px solid #999;}
-
 .account-summary{}
 .account-summary h4{text-align: center;}
+
+
+/* -------------------------------------- *\
+    Dashboard
+\* -------------------------------------- */
+.modal-title{color:#fff;}
+.modal li{list-style-type: none;}
+.modal li img{display: none;}
+.modal .add_to_cart_button{}
+
+@media(max-width:768px){
+    .summary-box{border-bottom:1px solid #ccc;padding: 20px;}
+    .brand{display: block;margin: 0 auto;}
+    .customer-name.pull-right{float:none !important;margin:0 auto;text-align: center;}
+    .portal-header .account-number, .account-name{text-align: center;}
+    .summary-box{border-left: 0;border-right:0;}
+}

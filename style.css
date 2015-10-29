@@ -183,6 +183,43 @@ p {
 #menu-header-menu.sf-js-enabled li ul li:last-child {
     border-radius:0 0px 5px 5px;
 }
+
+.menu-top-menu-container ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+.menu-top-menu-container ul li {
+  display: inline;
+  float: left;
+  position: relative;
+  padding: 5px 0;
+}
+.menu-top-menu-container ul li a {
+  border-right: 1px solid #000;
+  color: #b10b1f;
+  display: block;
+  font-weight: bold;
+  line-height: 23px;
+  padding: 0 11px;
+  text-transform: uppercase;
+}
+.menu-top-menu-container ul li:last-child a {
+  border-right: none;
+}
+.menu-top-menu-container ul li.live-chat {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+  border: medium none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.menu-top-menu-container ul li.live-chat a {
+  background: rgba(0, 0, 0, 0) url("images/icn-chat.png") no-repeat scroll right center / auto 23px;
+  padding-right: 40px;
+}
+
+
 .navbar-inner,
 .navbar-static .navbar-inner,
 .navbar-static-top .navbar-inner {
@@ -231,9 +268,6 @@ p {
   
 }
 .nav-collapse {
-    position:absolute;
-    z-index:100;
-    top:65px;
     width:100%;
 }
 #navbar-menu-header-menu li {
@@ -573,6 +607,7 @@ body.home .customer-actions .action.pay {
 }
 #footer .social ul {
     margin: 10px 0 0 0;
+    padding-left: 0;
 }
 #footer .social .copyright {
     color:#fff;
@@ -658,9 +693,10 @@ body.home .customer-actions .action.pay {
         background:url('images/logo_mobile.png') no-repeat;
         width:220px;
         height:57px;
-        margin:5px 0 0 5px;
+        margin:0 auto;
         padding:0;
 		background-size: cover;
+        float: none;
     }
     #header .cart-link {
         position:absolute;
@@ -1233,6 +1269,7 @@ font-size:24px;
 }
 #menu-page-footer-menu {
 	height:auto!important;
+    padding-left: 0;
 }
 #pressroom_container, 
 #pressroom {
