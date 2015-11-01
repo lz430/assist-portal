@@ -234,6 +234,12 @@ class BQ_CustomerProfile extends BQ_Base {
         }
     }
 
+    public function get_balanceFloat() {
+        $balance = $this->response->response[0]->customer[0]->balance;
+
+        return floatval($balance);
+    }
+
     public function get_balancePastDue() {
         $balance = $this->response->response[0]->customer[0]->balancePastDue;
 
@@ -258,6 +264,14 @@ class BQ_CustomerProfile extends BQ_Base {
 
     public function get_planPrice() {
         return $this->response->response[0]->customer[0]->telephones[0]->telephone[0]->planPrice;
+    }
+
+    public function get_DOB() {
+        return (string)$this->response->response[0]->customer[0]->dateOfBirth;
+    }
+
+    public function get_email() {
+        return $this->response->response[0]->customer[0]->contactInformation->email;
     }
 
     public function get_telephoneNumber1() {
