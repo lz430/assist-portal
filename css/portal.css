@@ -1114,3 +1114,26 @@ img{max-width: 100%;}
 .checkout-totals tr td{text-align: left;}
 .checkout-totals tr + tr{border:1px solid #f1f1f1;text-align: right;}
 .checkout-totals td + td{border-left:1px solid #f1f1f1;}
+
+/* -------------------------------------- *\
+    Shop
+\* -------------------------------------- */
+.woocommerce ul.products li.product{position:relative;height:200px;background:none !important;border-left:1px solid #B10B1F;border-top:1px solid #B10B1F;}
+.woocommerce ul.products li.product a img{display: none;}
+#page .products .excerpt{display:none;}
+a.add_to_cart_button{margin-top:0 !important;position:absolute;bottom:0;left:25%;}
+
+
+
+@media (max-width: 979px) and (min-width: 768px){
+    .woocommerce ul.products li.product:nth-child(3n+3){
+        margin-right: 5% !important;   
+    }
+}
+
+@media (max-width: 767px){
+    .woocommerce ul.products li.product{height:auto !important;text-align: center;}
+    a.add_to_cart_button{position: relative;left:auto;}
+}
+
+
