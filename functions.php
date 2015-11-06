@@ -39,30 +39,47 @@ function register_assist_menus()
 add_action( 'admin_head', 'register_assist_admin_icons' );
 function register_assist_admin_icons() {
     ?>
-<style type="text/css" media="screen">
+    <style type="text/css" media="screen">
     #menu-posts-locations .wp-menu-image {
         background: url(<?php bloginfo('template_url') ?>/images/admin-icon-map.png) no-repeat 6px -18px !important;
     }
-    #menu-posts-locations:hover .wp-menu-image, #menu-posts-portfolio.wp-has-current-submenu .wp-menu-image {
-        background-position:6px 6px !important;
+    
+    #menu-posts-locations:hover .wp-menu-image,
+    #menu-posts-portfolio.wp-has-current-submenu .wp-menu-image {
+        background-position: 6px 6px !important;
     }
-    #icon-edit.icon32-posts-locations {background: url(<?php bloginfo('template_url') ?>/images/admin-icon-map-large.png) no-repeat;}
+    
+    #icon-edit.icon32-posts-locations {
+        background: url(<?php bloginfo('template_url') ?>/images/admin-icon-map-large.png) no-repeat;
+    }
+    
     #menu-posts-commercials .wp-menu-image {
         background: url(<?php bloginfo('template_url') ?>/images/admin-icon-tv.png) no-repeat 6px -18px !important;
     }
-    #menu-posts-commercials:hover .wp-menu-image, #menu-posts-commercials.wp-has-current-submenu .wp-menu-image {
-        background-position:6px 6px !important;
+    
+    #menu-posts-commercials:hover .wp-menu-image,
+    #menu-posts-commercials.wp-has-current-submenu .wp-menu-image {
+        background-position: 6px 6px !important;
     }
-    #icon-edit.icon32-posts-commercials {background: url(<?php bloginfo('template_url') ?>/images/admin-icon-tv-large.png) no-repeat;}
+    
+    #icon-edit.icon32-posts-commercials {
+        background: url(<?php bloginfo('template_url') ?>/images/admin-icon-tv-large.png) no-repeat;
+    }
+    
     #menu-posts-cell-phone-plans .wp-menu-image {
         background: url(<?php bloginfo('template_url') ?>/images/admin-icon-phone.png) no-repeat 6px -18px !important;
     }
-    #menu-posts-cell-phone-plans:hover .wp-menu-image, #menu-posts-cell-phone-plans.wp-has-current-submenu .wp-menu-image {
-        background-position:6px 6px !important;
+    
+    #menu-posts-cell-phone-plans:hover .wp-menu-image,
+    #menu-posts-cell-phone-plans.wp-has-current-submenu .wp-menu-image {
+        background-position: 6px 6px !important;
     }
-    #icon-edit.icon32-posts-cell-phone-plans {background: url(<?php bloginfo('template_url') ?>/images/admin-icon-phone-large.png) no-repeat;}
-</style>
-<?php }
+    
+    #icon-edit.icon32-posts-cell-phone-plans {
+        background: url(<?php bloginfo('template_url') ?>/images/admin-icon-phone-large.png) no-repeat;
+    }
+    </style>
+    <?php }
     /* -------------------------------------- *\
         Adding custom fields for registration
     \* -------------------------------------- */
@@ -73,12 +90,18 @@ function register_assist_admin_icons() {
      */
     function wooc_extra_register_fields() {
 ?>
-    <div class="clear"></div>
-    <p class="form-row form-row-wide">
-        <label for="reg_register_phone"><?php _e( 'Phone', 'woocommerce' ); ?> <span class="required">*</span></label>
-        <input type="text" class="input" name="register_phone" id="reg_register_phone" value="<?php if ( ! empty( $_POST['register_phone'] ) ) esc_attr_e( $_POST['register_phone'] ); ?>" />
-    </p>
-    <?php
+        <div class="clear"></div>
+        <p class="form-row form-row-wide">
+            <label for="reg_register_phone">
+                <?php _e( 'Phone', 'woocommerce' ); ?> <span class="required">*</span></label>
+            <input type="text" class="input" name="register_phone" id="reg_register_phone" value="<?php if ( ! empty( $_POST['register_phone'] ) ) esc_attr_e( $_POST['register_phone'] ); ?>" />
+        </p>
+        <p class="form-row form-row-wide">
+            <label for="reg_register_dob">
+                <?php _e( 'Date of Birth (yyyy-mm-dd)', 'woocommerce' ); ?> <span class="required">*</span></label>
+            <input type="text" class="input" name="register_dob" id="reg_register_dob" value="<?php if ( ! empty( $_POST['register_dob'] ) ) esc_attr_e( $_POST['register_dob'] ); ?>" />
+        </p>
+        <?php
 }
 add_action( 'woocommerce_register_form', 'wooc_extra_register_fields' );
 /**
@@ -92,9 +115,12 @@ add_action( 'woocommerce_register_form', 'wooc_extra_register_fields' );
  */
 function wooc_validate_extra_register_fields( $username, $email, $validation_errors ) {
     if ( isset( $_POST['register_phone'] ) && empty( $_POST['register_phone'] ) ) {
-        $validation_errors->add( 'register_phone_error', __( '<strong>Error</strong>: Phone is required!.', 'woocommerce' ) );
+        $validation_errors->add( 'register_phone_error', __( 'Phone is required!.', 'woocommerce' ) );
     }
-    if ( isset( $_POST['register_phone'] ) ) {
+    if ( isset( $_POST['register_dob'] ) && empty( $_POST['register_dob'] ) ) {
+        $validation_errors->add( 'register_dob_error', __( 'Date of Birth is required!.', 'woocommerce' ) );
+    }
+    if ( isset( $_POST['register_phone'] ) && isset( $_POST['register_dob'] ) ) {
         include_once(TEMPLATEPATH . "/portal/api/Api.php");
         include_once(TEMPLATEPATH . "/portal/api/Setting.php");
         include_once(TEMPLATEPATH . "/portal/api/RequestParams.php");
@@ -113,10 +139,13 @@ function wooc_validate_extra_register_fields( $username, $email, $validation_err
         $Api->callAPI(Setting::URL, $request);
         $BQ->set_response($Api->response);
         // Must wrap certain properties/methods with print_r in order to "see" them
-        // echo print_r($BQ->get_response());
+        // echo print_r($BQ->get_DOB());
+        // echo print_r($_POST['register_dob']);
         // die();
-        if (!$BQ->isValidCustomer()) {
+        if ( ! $BQ->isValidCustomer( ) ) {
             $validation_errors->add( 'register_phone_error', __( 'Not a valid Assist Wireless phone number.', 'woocommerce' ) );
+        } elseif ( $BQ->get_DOB() <> $_POST['register_dob'] ) {
+            $validation_errors->add( 'register_dob_error', __( "Date of birth does not match what's in our records.", 'woocommerce' ) );
         } else {
             // HACK
             $BQ->update_customerId();
@@ -182,16 +211,15 @@ function post_login_get_acf($user_login, $user) {
         WC()->session->set('customerId', $customerId); // NOTE: Not $BQ->get_customerId()
         WC()->session->set('balance', $BQ->get_balance());
         WC()->session->set('balancePastDue', $BQ->get_balancePastDue());
-        // TODO: Fix next 2 lines
-        // WC()->session->set('planName', $BQ->get_planName());
-        // WC()->session->set('planPrice', $BQ->get_planPrice());
+        WC()->session->set('planName', $BQ->get_planName());
+        WC()->session->set('planPrice', $BQ->get_planPrice());
         // WC()->session->set('mdn', $BQ->get_telephoneNumber1());
         // WC()->session->set('daysLeft', $BQ->get_daysLeft());
     }
 }
 add_action( 'wp_login', 'post_login_get_acf', 10, 2 );
 function mysite_woocommerce_payment_complete( $order_id ) {
-	error_log( "Payment has been received for order $order_id", 1, "james@agilemediaventures.com" );
+    error_log( "Payment has been received for order $order_id", 1, "james@agilemediaventures.com" );
 }
 add_action( 'woocommerce_payment_complete', 'mysite_woocommerce_payment_complete' );
 function mysite_hold( $order_id ) {
@@ -200,14 +228,14 @@ function mysite_hold( $order_id ) {
 add_action( 'woocommerce_order_status_on-hold', 'mysite_hold');
 // TODO: Call BeQuick API to calculate sales tax
 function custom_add_tax( $instance ) {
-	if ( is_admin() && ! defined( 'DOING_AJAX' ) )
-		return;
+    if ( is_admin() && ! defined( 'DOING_AJAX' ) )
+        return;
     global $woocommerce;
     $fee = 0;
     foreach ( $woocommerce->cart->get_cart() as $cart_item_key => $values ) {
-    	$product = new WC_Product( $values['product_id'] );
-    	$sku = $product->get_sku();
-    	$qty = $values['quantity'];
+        $product = new WC_Product( $values['product_id'] );
+        $sku = $product->get_sku();
+        $qty = $values['quantity'];
         include_once(TEMPLATEPATH . "/portal/api/Api.php");
         include_once(TEMPLATEPATH . "/portal/api/Setting.php");
         include_once(TEMPLATEPATH . "/portal/api/RequestParams.php");
@@ -234,7 +262,7 @@ function custom_add_tax( $instance ) {
     // echo '<pre>' . var_export( $woocommerce->cart->get_cart(), true ) . '</pre>';
     // echo '<pre>' . var_export( $instance, true ) . '</pre>';
     $woocommerce->cart->add_fee( 'Sales Tax', $fee, true, 'standard' );
-	return $instance;
+    return $instance;
 }
 add_action( 'woocommerce_cart_calculate_fees', 'custom_add_tax' );
 function add_your_gateway_class( $methods ) {
@@ -248,7 +276,7 @@ add_filter( 'woocommerce_payment_gateways', 'add_your_gateway_class', 10, 1 );
  * @return string
  */
 function custom_add_to_cart_redirect() { 
-	// TODO
+    // TODO
     return '/portal-checkout?sku=444'; 
 }
 add_filter( 'woocommerce_add_to_cart_redirect', 'custom_add_to_cart_redirect' );
@@ -262,21 +290,15 @@ add_filter( 'woocommerce_add_to_cart_redirect', 'custom_add_to_cart_redirect' );
 //     return $methods;
 // }
 // add_filter( 'woocommerce_payment_gateways', 'add_your_gateway_class' );
-
-
 // Redirect customer after login
 add_filter('woocommerce_login_redirect', 'wcs_login_redirect');
 function wcs_login_redirect( $redirect ) {
  $redirect = '/portal-dashboard/';
  return $redirect;
 }
-
-
 // Removing Reviews
 add_filter( 'woocommerce_product_tabs', 'sb_woo_remove_reviews_tab', 98);
 function sb_woo_remove_reviews_tab($tabs) {
-
  unset($tabs['reviews']);
-
  return $tabs;
 }

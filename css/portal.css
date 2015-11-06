@@ -1072,9 +1072,12 @@
     border-radius:0 0px 5px 5px;
 }
 .navbar-default{background-color: transparent;border:0;}
+.text-right{text-align: right !important;}
 /* -------------------------------------- *\
     Account Usage Summary
 \* -------------------------------------- */
+img{max-width: 100%;}
+.form-control{width:95%;}
 .account-balance-summary{}
 .account-balance-summary .summary-box,
 .account-balance-summary .summary-days-left{text-align: center;}
@@ -1085,16 +1088,17 @@
 .text-balance{border-left:1px solid #999;border-right: 1px solid #999;}
 .account-summary{}
 .account-summary h4{text-align: center;}
-
-
 /* -------------------------------------- *\
     Dashboard
 \* -------------------------------------- */
 .modal-title{color:#fff;}
-.modal li{list-style-type: none;}
+.modal li{list-style-type: none;width:48%;padding:0 1%;float:left;margin:2% 0;}
+.modal li:hover{background:#fafafa;}
+.modal li a{display: block;}
 .modal li img{display: none;}
+.modal li h3{margin:0;padding:0;}
 .modal .add_to_cart_button{}
-
+.modal .close{opacity: 1;filter:alpha(opacity=100);color:#fff;}
 @media(max-width:768px){
     .summary-box{border-bottom:1px solid #ccc;padding: 20px;}
     .brand{display: block;margin: 0 auto;}
@@ -1102,3 +1106,34 @@
     .portal-header .account-number, .account-name{text-align: center;}
     .summary-box{border-left: 0;border-right:0;}
 }
+
+/* -------------------------------------- *\
+    Checkout
+\* -------------------------------------- */
+.checkout-totals{width: 95%;}
+.checkout-totals tr td{text-align: left;}
+.checkout-totals tr + tr{border:1px solid #f1f1f1;text-align: right;}
+.checkout-totals td + td{border-left:1px solid #f1f1f1;}
+
+/* -------------------------------------- *\
+    Shop
+\* -------------------------------------- */
+.woocommerce ul.products li.product{position:relative;height:200px;background:none !important;border-left:1px solid #B10B1F;border-top:1px solid #B10B1F;}
+.woocommerce ul.products li.product a img{display: none;}
+#page .products .excerpt{display:none;}
+a.add_to_cart_button{margin-top:0 !important;position:absolute;bottom:0;left:25%;}
+
+
+
+@media (max-width: 979px) and (min-width: 768px){
+    .woocommerce ul.products li.product:nth-child(3n+3){
+        margin-right: 5% !important;   
+    }
+}
+
+@media (max-width: 767px){
+    .woocommerce ul.products li.product{height:auto !important;text-align: center;}
+    a.add_to_cart_button{position: relative;left:auto;}
+}
+
+
