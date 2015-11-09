@@ -26,7 +26,7 @@ class BQ_Base {
     }
 
     static function formatRemainingData($mbData) {
-    	if ($mbData < 100) {
+    	if ($mbData < 500) {
 	    	return number_format(floor($mbData * 100) / 100) . ' MBs';
     	} else {
 	    	return number_format((floor($mbData * 100) / 100) / 1000, 1) . ' GBs';

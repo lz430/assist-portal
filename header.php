@@ -29,7 +29,6 @@
 </head>
 <body <?php body_class(); ?>>
     <?php 
-
         if (false) {
             if( !is_admin() ) {
                 // Set
@@ -100,10 +99,15 @@
                 </a>
                 <div class="customer-name pull-right col-xs12">
                     <?php
-                        wp_nav_menu(array(
-                        'theme_location' => 'upper-menu',
-                        'container_class'=>'menu-top-menu-container',
-                        'menu_id' => 'menu-top-menu')); 
+                        // If user is logged in
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'upper-menu',
+                                'container_class'=>'menu-top-menu-container',
+                                'menu_id' => 'menu-top-menu'
+                            )
+                        ); 
+                        // else do nothing
                      ?>
                      <div class="contact pull-right customer-service">
                         <label>Toll Free Sales and Customer Service</label>
@@ -125,10 +129,13 @@
                                 <span class="icon-bar"></span>
                               </button>
                             <div class="collapse navbar-collapse">
-                                <?php wp_nav_menu(
-                                    array(  'theme_location' => 'header-menu',
-                                    'container_class'=>'nav navbar-nav',
-                                    'menu_id' => 'menu-header-menu')); 
+                                <?php 
+                                    wp_nav_menu(
+                                    array(  
+                                        'theme_location' => 'header-menu',
+                                        'container_class'=>'nav navbar-nav',
+                                        'menu_id' => 'menu-header-menu',
+                                    )); 
                                 ?>
                             </div>
                         </div>

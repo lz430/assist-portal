@@ -46,64 +46,59 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
       .validation.text-danger:after {
         content: 'Validation failed';
       }
-/*      .validation.text-success:after {
+      .validation.text-success:after {
         content: 'Validation passed';
       }
-*/    </style>
-    <div class="container">
-      <div class="form-group">
+    </style>
+    <div class="container payment-page">
+      <div class="form-group checkout-table col-lg-6 col-md-6 col-sm-6 col-xs-12">
           <div class="table-responsive">
-            <table class="checkout-totals table-bordered">
-              <thead>
-                <tr>
-                  <th>Product: </th>
-                  <th>Price: </th>
-                </tr>
-              </thead>
+            <h1>Review Order</h1>
+            <table class="checkout-totals">
               <tbody>
                 <tr>
-                  <td><?php echo $BQ->get_sku_description(); ?></td>
-                  <td class="text-right">$<?php echo $BQ->get_sku_price(); ?></td>
+                  <td><b><?php echo $BQ->get_sku_description(); ?></b></td>
+                  <td class="text-right static-width">$<?php echo $BQ->get_sku_price(); ?></td>
                 </tr>
-                <tr>
-                  <td class="text-right">Tax: </td>
-                  <td class="text-right">$<?php echo $BQ->get_tax_total(); ?></td>
+                <tr class="border-top">
+                  <td class=""><b>Tax: </b></td>
+                  <td class="text-right static-width">$<?php echo $BQ->get_tax_total(); ?></td>
                 </tr>
-                <tr>
-                  <td class="text-right"><b>Total: </b></td>
-                  <td class="text-right">$<?php echo $BQ->get_total_due(); ?></td>
+                <tr class=" alert alert-warning">
+                  <td class=""><b>Total: </b></td>
+                  <td class="text-right static-width">$<?php echo $BQ->get_total_due(); ?></td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </div>
-      <form novalidate autocomplete="on" method="POST">
+      </div>
+      <form class="payment-form col-lg-6 col-md-6 col-sm-6 col-xs-12" novalidate autocomplete="on" method="POST">
+        <h1>Payment Information</h1>
         <h2 class="validation"></h2>
         <div class="form-group">
-          <label for="cc-number" class="control-label">Card Number <small class="text-muted">[<span class="cc-brand"></span>]</small></label>
+          <label for="cc-name" class="control-label">Cardholder Name </label>
+          <input id="cc-name" type="tel" class="input-lg form-control cc-name" autocomplete="cc-name" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="cc-number" class="control-label">Card Number </label>
           <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required>
         </div>
-        <div class="form-group">
-          <label for="cc-name" class="control-label">Cardholder Name </label>
-          <input id="cc-name" type="tel" class="input-lg form-control cc-name" autocomplete="cc-name" required>
-        </div>
-        <div class="form-group">
+        <div class="form-group cc-exp">
           <label for="cc-exp" class="control-label">Card Expiration Date</label>
           <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••••" required>
         </div>
-        <div class="form-group">
+        <div class="form-group cc-cvc">
           <label for="cc-cvc" class="control-label">Card CVC</label>
           <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" required>
         </div>
-        
-        
         <div class="form-group">
           <input type="hidden" id="sku" value="<?php echo $sku; ?>" />
           <input type="hidden" id="customerId" value="<?php echo WC()->session->get('customerId'); ?>" />
           <input type="hidden" id="totalDue" value="<?php echo $BQ->get_total_due(); ?>" />
-          <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+          <button type="submit" class="btn btn-lg btn-primary submit-payment">Submit</button>
         </div>
       </form>
+      
     </div>
     <script>
       jQuery(function($) {

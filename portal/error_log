@@ -1,0 +1,7 @@
+[06-Nov-2015 11:33:41 America/Phoenix] PHP Warning:  file_get_contents(http://104.245.38.218/gateway.cgi): failed to open stream: HTTP request failed!  in /home/content/73/4441573/html/aportal/wp-content/themes/assistv2/portal/api/Api.php on line 62
+[06-Nov-2015 11:33:41 America/Phoenix] PHP Fatal error:  Uncaught exception 'Exception' with message 'String could not be parsed as XML' in /home/content/73/4441573/html/aportal/wp-content/themes/assistv2/portal/api/Api.php:64
+Stack trace:
+#0 /home/content/73/4441573/html/aportal/wp-content/themes/assistv2/portal/api/Api.php(64): SimpleXMLElement->__construct('')
+#1 /home/content/73/4441573/html/aportal/wp-content/themes/assistv2/portal/process-order.php(105): Api->callAPI('http://104.245....', Object(SimpleXMLElement))
+#2 {main}
+  thrown in /home/content/73/4441573/html/aportal/wp-content/themes/assistv2/portal/api/Api.php on line 64
