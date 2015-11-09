@@ -71,11 +71,9 @@
             
             WC()->session->set('planName', (string)$BQ->get_planName());
             WC()->session->set('planPrice', (string)$BQ->get_planPrice());
-
             WC()->session->set('mdn', $BQ->get_telephoneNumber1());
             WC()->session->set('daysLeft', $BQ->get_daysLeft());
             WC()->session->set('carrier', $BQ->get_carrier());
-
             // $_SESSION['fullname'] = WC()->session->get('fullname');
             // $_SESSION['customerId'] = WC()->session->get('customerId');
             // $_SESSION['balance'] = WC()->session->get('balance');
@@ -84,7 +82,6 @@
             // $_SESSION['planPrice'] = "TBD";
             // $_SESSION['mdn'] = WC()->session->get('mdn');
             // $_SESSION['daysLeft'] = WC()->session->get('daysLeft');
-
             // $_SESSION['fullname'] = $BQ->get_fullname();
             // $_SESSION['customerId'] = $BQ->get_customerId();
             // $_SESSION['balance'] = $BQ->get_balance();
@@ -102,10 +99,15 @@
                 </a>
                 <div class="customer-name pull-right col-xs12">
                     <?php
-                        wp_nav_menu(array(
-                        'theme_location' => 'upper-menu',
-                        'container_class'=>'menu-top-menu-container',
-                        'menu_id' => 'menu-top-menu')); 
+                        // If user is logged in
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'upper-menu',
+                                'container_class'=>'menu-top-menu-container',
+                                'menu_id' => 'menu-top-menu'
+                            )
+                        ); 
+                        // else do nothing
                      ?>
                      <div class="contact pull-right customer-service">
                         <label>Toll Free Sales and Customer Service</label>
@@ -127,10 +129,13 @@
                                 <span class="icon-bar"></span>
                               </button>
                             <div class="collapse navbar-collapse">
-                                <?php wp_nav_menu(
-                                    array(  'theme_location' => 'header-menu',
-                                    'container_class'=>'nav navbar-nav',
-                                    'menu_id' => 'menu-header-menu')); 
+                                <?php 
+                                    wp_nav_menu(
+                                    array(  
+                                        'theme_location' => 'header-menu',
+                                        'container_class'=>'nav navbar-nav',
+                                        'menu_id' => 'menu-header-menu',
+                                    )); 
                                 ?>
                             </div>
                         </div>

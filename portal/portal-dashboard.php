@@ -36,9 +36,9 @@
         <h2>Hello <?php echo WC()->session->get("fullname") ?></h2>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 account-number">
-        <h4>Account Number: <?php echo WC()->session->get("customerId") ?> </h4>
-        <h4>Phone Number: <?php echo preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', WC()->session->get("mdn")); ?> </h4>
-        <h4>Carrier: <?php echo WC()->session->get("carrier") ?> </h4>
+        <h4><b>Account Number:</b> <?php echo WC()->session->get("customerId") ?> </h4>
+        <h4><b>Phone Number:</b> <?php echo preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', WC()->session->get("mdn")); ?> </h4>
+        <!-- <h4>Carrier: <?php echo WC()->session->get("carrier") ?> </h4> -->
     </div>
 </div>
 <!-- end portal-header-->
@@ -76,26 +76,25 @@
     <div class="row">
         <div class="account-summary col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <h4>Plan &amp; Account Info</h4>
-            <p>Enrolled Plan:
+            <p><b>Enrolled Plan:</b>
                 <?php echo WC()->session->get('planName'); ?>
             </p>
-            <p>Monthly Fee:
+            <p><b>Monthly Fee: </b>$
                 <?php echo WC()->session->get('planPrice'); ?>
             </p>
-            <p>Current Balance:
+            <p><b>Current Balance:</b>
                 <?php echo WC()->session->get('balance'); ?>
             </p>
-            <p>Past Due Balance:
+            <p><b>Past Due Balance:</b>
                 <?php echo WC()->session->get('balancePastDue'); ?> <br>
-                <a href="<?php echo "/make-payment/?paymentAmount=" . (string)WC()->session->get('balanceFloat'); ?>" class="btn btn-primary">Make Payment</a>
+                <a href="<?php echo "/make-payment/?paymentAmount=" . (string)WC()->session->get('balanceFloat'); ?>" class="btn btn-primary make-payment">Make Payment</a>
             </p>
         </div>
-        <div class="balance col-lg-5 col-md-5 col-sm-5 col-xs-12"> <img src="https://placehold.it/450x150" alt="Ad space"> </div>
-    </div>
-    <!-- end row-->
-</div>
-<!-- end container-->
-
+        <div class="balance col-lg-6 col-md-6 col-sm-6 col-xs-12"> 
+          <img src="<?php bloginfo('template_url'); ?>/images/portal-image-1.png" alt="Ad space"> 
+        </div>
+    </div><!-- end row-->
+</div><!-- end container-->
 <!-- Button trigger modal -->
 <!-- Modal for Minutes-->
 <div class="modal fade" id="modalMinutes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -107,30 +106,30 @@
       </div>
       <div class="modal-body">
         <?php 
-        // http://stackoverflow.com/a/30978923
-        $args = array(
-            'posts_per_page' => -1,
-            'product_cat' => 'voice-minutes',
-            'post_type' => 'product',
-            'orderby' => 'meta_value_num',
-            'meta_key' => '_price',
-            'order' => 'asc'
-        );
-        // Product SKUs vary based on the carrier
-        if (WC()->session->get("carrier") == 'Assist Wholesale') {
-          $args['product_tag'] = 'aw';
-        } else {
-          $args['product_tag'] = 'gsm';
-        }
-        $the_query = new WP_Query( $args );
-        // The Loop
-        while ( $the_query->have_posts() ) {
-          $the_query->the_post();
-          wc_get_template_part( 'content', 'product-modal' );
-          // woocommerce_template_loop_add_to_cart();
-        }
-        wp_reset_postdata();
-         ?>
+          // http://stackoverflow.com/a/30978923
+          $args = array(
+              'posts_per_page' => -1,
+              'product_cat' => 'voice-minutes',
+              'post_type' => 'product',
+              'orderby' => 'meta_value_num',
+              'meta_key' => '_price',
+              'order' => 'asc'
+          );
+          // Product SKUs vary based on the carrier
+          if (WC()->session->get("carrier") == 'Assist Wholesale') {
+            $args['product_tag'] = 'aw';
+          } else {
+            $args['product_tag'] = 'gsm';
+          }
+          $the_query = new WP_Query( $args );
+          // The Loop
+          while ( $the_query->have_posts() ) {
+            $the_query->the_post();
+            wc_get_template_part( 'content', 'product-modal' );
+            // woocommerce_template_loop_add_to_cart();
+          }
+          wp_reset_postdata();
+        ?>
          <div class="clearfix"></div>
       </div>
       <div class="modal-footer">
@@ -140,7 +139,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal for Text-->
 <div class="modal fade" id="modalText" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -184,7 +182,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal for Data-->
 <div class="modal fade" id="modalData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -242,7 +239,6 @@
     remainingText = parseInt(remainingText, 10);
     remainingData = remainingData.replace(/\,/g,'');
     remainingData = parseInt(remainingData, 10);
-    console.log(remainingMinutes);
     
     var gg1 = new JustGage({
       id: "gauge-minutes",
