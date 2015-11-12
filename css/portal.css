@@ -1138,17 +1138,18 @@ img{max-width: 100%;}
 .payment-page{margin-top:2%;}
 .checkout-table{}
 .checkout-table h1{border-bottom:1px solid #f1f1f1;}
-.checkout-totals{width: 100%;overflow: hidden;}
-.checkout-totals tr td{text-align: left;padding: 15px 5px;}
-.checkout-totals tr + tr{text-align: right;}
-.checkout-totals tr.border-top{border-top:1px dotted #d1d1d1;}
-.checkout-totals td + td{}
-.checkout-totals .static-width{width:20%;}
+table{width: 100%;overflow: hidden;}
+table tr td{text-align: left;padding: 15px 5px;}
+table tr + tr{text-align: right;}
+table tr.border-top{border-top:1px dotted #d1d1d1;}
+table td + td{}
+table .static-width{width:20%;}
 .payment-form .form-group.cc-exp, .payment-form .form-group.cc-cvc{float:left;width:49%;}
 .submit-payment{width:50%;}
 .input-lg{background: #f1f1f1;}
 .input-lg:active, 
 .input-lg:focus{background: #fff;}
+.make-payment .phone-no{width:30%;}
 @media(max-width:767px){
     .submit-payment{width:96%;}
 }

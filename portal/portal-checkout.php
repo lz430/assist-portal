@@ -83,11 +83,11 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
           <label for="cc-number" class="control-label">Card Number </label>
           <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required>
         </div>
-        <div class="form-group cc-exp">
+        <div class="form-group">
           <label for="cc-exp" class="control-label">Card Expiration Date</label>
           <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••••" required>
         </div>
-        <div class="form-group cc-cvc">
+        <div class="form-group">
           <label for="cc-cvc" class="control-label">Card CVC</label>
           <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" required>
         </div>

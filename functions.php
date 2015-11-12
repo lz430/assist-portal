@@ -22,6 +22,7 @@ function assist_portal_scripts_styles() {
     wp_enqueue_style('gauge-style', 'http://www.jqueryscript.net/demo/jQuery-Plugin-To-Generate-Animated-Dynamic-Gauges-dynameter/css/jquery.dynameter.css', array(), rand(111,9999));
     wp_enqueue_script('gauge-script', 'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js', array(), rand(111,9999));
     wp_enqueue_script('gauges', get_template_directory_uri().'/js/justgage-1.1.0.min.js', array(), rand(111,9999));
+    wp_enqueue_script( 'jquery_payment', get_template_directory_uri() . '/js/jquery.payment/jquery.payment.min.js', array('jquery') );
     wp_enqueue_script('portal-scripts', get_template_directory_uri().'/js/portal.js', array(), rand(111,9999));
 }
 add_action('wp_enqueue_scripts','assist_portal_scripts_styles');

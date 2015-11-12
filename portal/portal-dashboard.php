@@ -38,34 +38,36 @@
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 account-number">
         <h4><b>Account Number:</b> <?php echo WC()->session->get("customerId") ?> </h4>
         <h4><b>Phone Number:</b> <?php echo preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', WC()->session->get("mdn")); ?> </h4>
-        <!-- <h4>Carrier: <?php echo WC()->session->get("carrier") ?> </h4> -->
+        <!-- <h4>Carrier: <?php //echo WC()->session->get("carrier"); ?> </h4> -->
     </div>
 </div>
 <!-- end portal-header-->
 <div class="clearfix"></div>
 <div class="container account-balance-summary">
-    <div class="row">
-        <h3 class="center">Available Balances</h3>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 voice-balance summary-box">
-          <i class="fa fa-mobile"></i>
-          <h3>Voice</h3>
-          <div id="gauge-minutes"></div>
-          <h4><?php echo WC()->session->get("remainingMinutes") ?></h4>
-          <a href="#" class="btn btn-primary top-up-voice" data-toggle="modal" data-target="#modalMinutes">Top Up</a>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-balance summary-box"> 
-          <i class="fa fa-comments"></i>
-          <h3>Text</h3>
-          <div id="gauge-text"></div>
-          <h4><?php echo WC()->session->get("remainingText") ?></h4> 
-          <a href="#" class="btn btn-primary top-up-text" data-toggle="modal" data-target="#modalText">Top Up</a> </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 data-balance summary-box"> 
-          <i class="fa fa-rss"></i>
-          <h3>Data</h3>
-          <div id="gauge-data"></div>
-          <h4><?php echo WC()->session->get("remainingData") ?></h4> 
-          <a href="#" class="btn btn-primary top-up-data" data-toggle="modal" data-target="#modalData">Top Up</a> </div>
+  <div class="row">
+    <h3 class="center">Available Balances</h3>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 voice-balance summary-box">
+      <i class="fa fa-mobile"></i>
+      <h3>Voice</h3>
+      <div id="gauge-minutes"></div>
+      <h4><?php echo WC()->session->get("remainingMinutes") ?></h4>
+      <a href="#" class="btn btn-primary top-up-voice" data-toggle="modal" data-target="#modalMinutes">Top Up</a>
     </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-balance summary-box"> 
+      <i class="fa fa-comments"></i>
+      <h3>Text</h3>
+      <div id="gauge-text"></div>
+      <h4><?php echo WC()->session->get("remainingText") ?></h4> 
+      <a href="#" class="btn btn-primary top-up-text" data-toggle="modal" data-target="#modalText">Top Up</a> 
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 data-balance summary-box"> 
+      <i class="fa fa-rss"></i>
+      <h3>Data</h3>
+      <div id="gauge-data"></div>
+      <h4><?php echo WC()->session->get("remainingData") ?></h4> 
+      <a href="#" class="btn btn-primary top-up-data" data-toggle="modal" data-target="#modalData">Top Up</a> 
+    </div>
+  </div>
     <!-- end row-->
 </div>
 <!-- end account-balance-summary-->
@@ -230,6 +232,7 @@
     var remainingMinutes = "<?php echo WC()->session->get('remainingMinutes') ?>";
     var remainingText    = "<?php echo WC()->session->get('remainingText') ?>";
     var remainingData    = "<?php echo WC()->session->get('remainingData') ?>";
+    console.log(remainingData);
     /* -------------------------------------- *\
         Convert everything to numbers
     \* -------------------------------------- */
@@ -239,7 +242,7 @@
     remainingText = parseInt(remainingText, 10);
     remainingData = remainingData.replace(/\,/g,'');
     remainingData = parseInt(remainingData, 10);
-    
+    // Minutes Gauge
     var gg1 = new JustGage({
       id: "gauge-minutes",
       value : remainingMinutes,
@@ -263,6 +266,7 @@
       }],
       counter: true
     });
+    // Text Gauge
     var gg2 = new JustGage({
       id: "gauge-text",
       value : remainingText,
@@ -286,6 +290,7 @@
       }],
       counter: true
     });
+    // Data gauge
     var gg3 = new JustGage({
       id: "gauge-data",
       value : remainingData,
