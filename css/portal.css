@@ -1097,6 +1097,8 @@ li.menu-item:nth-of-type(2){
 /* -------------------------------------- *\
     Account Usage Summary
 \* -------------------------------------- */
+#page .clearfix + .container{width:100%;padding:0;}
+
 img{max-width: 100%;}
 .balance img{max-width: 97%;}
 .form-control{width:95%;}
@@ -1136,7 +1138,6 @@ img{max-width: 100%;}
     border-color:transparent;
     text-indent: 0 !important;
 }
-
 @media(max-width:767px){
     .summary-box{border-bottom:1px solid #ccc;padding: 20px;}
     .brand{display: block;margin: 0 auto;}
@@ -1170,7 +1171,6 @@ table .static-width{width:20%;}
 .input-lg:active, 
 .input-lg:focus{background: #fff;}
 .make-payment .phone-no{width:30%;}
-
 /* -------------------------------------- *\
     Shop
 \* -------------------------------------- */

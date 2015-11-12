@@ -27,8 +27,8 @@
   $request = $Api->buildRequest($requestParams);
   $Api->callAPI(Setting::URL, $request);
   $BQ->set_response($Api->response);
+  WC()->session->set("remainingDataFloat", $BQ->get_remainingDataFloat());
   WC()->session->set("remainingData", $BQ->get_remainingData());
-  //WC()->session->set("remainingDataUnformatted", $BQ->get_remainingData_unformatted());
   WC()->session->set("remainingMinutes", $BQ->get_remainingMinutes());
   WC()->session->set("remainingText", $BQ->get_remainingText());
 ?>
@@ -233,9 +233,7 @@
     var remainingMinutes            = "<?php echo WC()->session->get('remainingMinutes') ?>";
     var remainingText               = "<?php echo WC()->session->get('remainingText') ?>";
     var remainingData               = "<?php echo WC()->session->get('remainingData') ?>";
-    var remainingDataUnformatted    = "<?php echo WC()->session->get('remainingData_unformatted') ?>";
-    console.log("Formatted: " + remainingData);
-    console.log("Unformatted: " + remainingDataUnformatted);
+    var remainingDataUnformatted    = "<?php echo WC()->session->get('remainingDataFloat') ?>";
     /* -------------------------------------- *\
         Convert everything to numbers
     \* -------------------------------------- */
