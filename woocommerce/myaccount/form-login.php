@@ -13,8 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php wc_print_notices(); ?>
 <?php do_action( 'woocommerce_before_customer_login_form' ); ?>
 <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
-<div class="row" id="customer_login">
-	<div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+	<div class="row" id="customer_login">
+		<div class="col-lg-2 col-md-2 col-sm-hidden col-xs-hidden"></div>
+		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 <?php endif; ?>
 		<h2><?php _e( 'Login', 'woocommerce' ); ?></h2>
 		<form method="post" class="login">
@@ -42,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</form>
 <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
 	</div>
-	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 		<h2><?php _e( 'Register', 'woocommerce' ); ?></h2>
 		<form method="post" class="register">
 			<?php do_action( 'woocommerce_register_form_start' ); ?>
@@ -73,7 +74,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</p>
 			<?php do_action( 'woocommerce_register_form_end' ); ?>
 		</form>
-	</div>
+	</div><!-- end register columns-->
+	<div class="col-lg-2 col-md-2 col-sm-hidden col-xs-hidden"></div>	
 </div>
 <?php endif; ?>
 <?php do_action( 'woocommerce_after_customer_login_form' ); ?>

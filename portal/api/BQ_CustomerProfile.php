@@ -227,11 +227,11 @@ class BQ_CustomerProfile extends BQ_Base {
         setlocale(LC_MONETARY, 'en_US');
 
         // NOTE: money_format function is not supported in PHP on Windows
-        if (function_exists('money_format')) {
-            return money_format('%(#10n', floatval($balance) * -1.0);
-        } else {
-            return self::money_format_custom('%(#10n', floatval($balance) * -1.0);
-        }
+        // if (function_exists('money_format')) {
+        //     return money_format('%(#10n', floatval($balance) * -1.0);
+        // } else {
+            return self::money_format_custom('%#1n', floatval($balance) * 1.0);
+        // }
     }
 
     public function get_balanceFloat() {
@@ -247,11 +247,11 @@ class BQ_CustomerProfile extends BQ_Base {
         setlocale(LC_MONETARY, 'en_US');
 
         // NOTE: money_format function is not supported in PHP on Windows
-        if (function_exists('money_format')) {
-            return money_format('%(#10n', floatval($balance) * -1.0);
-        } else {
-            return self::money_format_custom('%(#10n', floatval($balance) * -1.0);
-        }
+        // if (function_exists('money_format')) {
+        //     return money_format('%(#10n', floatval($balance) * -1.0);
+        // } else {
+            return self::money_format_custom('%#1n', floatval($balance) * 1.0);
+        // }
     }
 
     public function get_carrier() {
@@ -353,6 +353,12 @@ class BQ_CustomerProfile extends BQ_Base {
                 $currency = ''; 
             } 
             $space  = $locale["{$letter}_sep_by_space"] ? ' ' : ''; 
+            // HACK!
+            $space = ' ';
+            if ($prefix == '(') {
+                $prefix = '-';
+                $suffix = '';
+            }
 
             $value = number_format($value, $right, $locale['mon_decimal_point'], 
                      $flags['nogroup'] ? '' : $locale['mon_thousands_sep']); 

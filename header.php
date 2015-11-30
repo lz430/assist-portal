@@ -94,20 +94,20 @@
      ?>
         <div id="page" class="container">
             <header id="header">
-                <a class="brand col-lg-2 col-md-2 col-sm-2 col-xs-12" href="<?php bloginfo('url'); ?>">
+                <a class="brand col-lg-2 col-md-2 col-sm-2 col-xs-12" href="http://assistwireless.com">
                     <?=bloginfo('name')?>
                 </a>
                 <div class="customer-name pull-right col-xs12">
                     <?php
-                        // If user is logged in
-                        wp_nav_menu(
-                            array(
-                                'theme_location' => 'upper-menu',
-                                'container_class'=>'menu-top-menu-container',
-                                'menu_id' => 'menu-top-menu'
-                            )
-                        ); 
-                        // else do nothing
+                        if ( $user_ID ) {
+                            wp_nav_menu(
+                                array(
+                                    'theme_location' => 'upper-menu',
+                                    'container_class'=>'menu-top-menu-container',
+                                    'menu_id' => 'menu-top-menu'
+                                )
+                            ); 
+                        }// else do nothing
                      ?>
                      <div class="contact pull-right customer-service">
                         <label>Toll Free Sales and Customer Service</label>

@@ -96,17 +96,42 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
           <input type="hidden" id="customerId" value="<?php echo WC()->session->get('customerId'); ?>" />
           <input type="hidden" id="totalDue" value="<?php echo $BQ->get_total_due(); ?>" />
           <button type="submit" class="btn btn-lg btn-primary submit-payment">Submit</button>
+          <!-- <button type="submit" class="btn btn-lg btn-primary submit-payment" data-toggle="modal" data-target=".bs-example-modal-sm">Submit</button> -->
         </div>
       </form>
       
     </div>
+
+
+    <!-- Modal for processing -->
+
+    <div class="modal fade bs-example-modal-sm processing-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+            <h4 class="modal-title">Processing...</h4>
+          </div>
+          <div class="modal-body">
+            <p>Please wait while we process your payment</p>
+            <p><img class="loader" src="<?php echo bloginfo('template_directory') ?>/images/loading.gif" alt=""></p>
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div> -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
     <script>
       jQuery(function($) {
         $('.cc-number').payment('formatCardNumber');
         $('.cc-exp').payment('formatCardExpiry');
         $('.cc-cvc').payment('formatCardCVC');
-        $.fn.toggleInputError = function(erred) {
-          this.parent('.form-group').toggleClass('has-error', erred);
+        $.fn.toggleInputError = function(errored) {
+          this.parent('.form-group').toggleClass('has-error', errored);
           return this;
         };
         $('form').submit(function(e) {
@@ -118,8 +143,10 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
           $('.cc-brand').text(cardType);
           $('.validation').removeClass('text-danger text-success');
           $('.validation').addClass($('.has-error').length ? 'text-danger' : 'text-success');
+
           if (!$('.has-error').length) {
-            $('.validation').text("Processing payment...");
+            // $('.validation').text("Processing payment...");
+            $('.processing-modal').modal('show');
             $.ajax({
               url: "/wp-content/themes/assistv2/portal/process-order.php",
               data: {
@@ -136,11 +163,13 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
             }).done(function(data) {
               $('.validation').removeClass('text-danger text-success');
               if (data.status == "error") {
+                $('.processing-modal').modal('hide');
                 $('.validation').addClass('text-danger');
                 $('.validation').text(data.message);
               } else {
-                $('.validation').addClass('text-success');
-                $('.validation').text('Payment successful.');
+                window.location.href = ('/thank-you/')
+                // $('.validation').addClass('text-success');
+                // $('.validation').text('Payment successful.');
               }
             });
           }

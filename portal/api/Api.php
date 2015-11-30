@@ -48,6 +48,13 @@ class Api
 
     // TODO: Make stateless by pulling out any parameters that must be passed in via caller
     public function callAPI($url, $request) {
+        $debug = false;
+
+    	if ($debug) {
+    		$file = __DIR__ . '/APIcalls.xml';
+			file_put_contents($file, $request->asXML(), FILE_APPEND);
+    	}
+
 		$data = array('request' => $request->asXML());
 
 		// use key 'http' even if you send the request to https://...
@@ -62,6 +69,11 @@ class Api
 		$result = file_get_contents($url, false, $context);
 
 		$this->response = new SimpleXMLElement($result);
+
+    	if ($debug) {
+    		$file = __DIR__ . '/APIcalls.xml';
+			file_put_contents($file, $this->response->asXML(), FILE_APPEND);
+    	}
 
         if (false) {
             echo "<pre>";
