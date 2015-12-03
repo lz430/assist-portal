@@ -7,7 +7,7 @@ class Setting {
     const CLEC_FIRSTNAME = "customer";
     const CLEC_LASTNAME = "portal_api";
 
-    const WC_BASE_URL = "http://ap.430designs.com";
+    const WC_BASE_URL = "http://portal.assistwireless.com";
     const WC_CONSUMER_KEY = "ck_44963f7bcdd06c3336558491243aeff1e190f014";
     const WC_CONSUMER_SECRET = "cs_ff4c2a087839b0dc820229077fd0732ae608e802";
 }

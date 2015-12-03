@@ -1,11 +1,11 @@
 <?php
 	// BAD
-	// http://ap.430designs.com/wp-content/themes/assistv2/portal/process-order.php?sku=325&customerId=11132419&totalDue=7.8&ccNum=4111111111119999&ccName=James&ccExpDate=05/2015&ccCV=250
-	// http://ap.430designs.com/wp-content/themes/assistv2/portal/process-order.php?sku=325&customerId=11132419&totalDue=7.8&ccNum=4111111111119999&ccName=James&ccExpDate=05/2016&ccCV=250
+	// http://portal.assistwireless.com/wp-content/themes/assistv2/portal/process-order.php?sku=325&customerId=11132419&totalDue=7.8&ccNum=4111111111119999&ccName=James&ccExpDate=05/2015&ccCV=250
+	// http://portal.assistwireless.com/wp-content/themes/assistv2/portal/process-order.php?sku=325&customerId=11132419&totalDue=7.8&ccNum=4111111111119999&ccName=James&ccExpDate=05/2016&ccCV=250
 
 	// GOOD
-	// http://ap.430designs.com/wp-content/themes/assistv2/portal/process-order.php?sku=325&customerId=11132419&totalDue=7.80&ccNum=5262930430734244&ccName=Jordan Majkszak&ccExpDate=05/2024&ccCV=250
-	// http://ap.430designs.com/wp-content/themes/assistv2/portal/process-order.php?sku=321&customerId=11132419&totalDue=4.46&ccNum=5262930430734244&ccName=Jordan Majkszak&ccExpDate=05/2024&ccCV=250
+	// http://portal.assistwireless.com/wp-content/themes/assistv2/portal/process-order.php?sku=325&customerId=11132419&totalDue=7.80&ccNum=5262930430734244&ccName=Jordan Majkszak&ccExpDate=05/2024&ccCV=250
+	// http://portal.assistwireless.com/wp-content/themes/assistv2/portal/process-order.php?sku=321&customerId=11132419&totalDue=4.46&ccNum=5262930430734244&ccName=Jordan Majkszak&ccExpDate=05/2024&ccCV=250
 
  	header('Content-type: application/json');
 
