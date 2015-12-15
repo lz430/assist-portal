@@ -1200,7 +1200,7 @@ body.home p#nav{display: none;}
     color:#a94442 !important;
     background-color:#f2dede !important;
 }
-
+.alert{padding:10px;}
 /* -------------------------------------- *\
     Buttons
 \* -------------------------------------- */
