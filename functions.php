@@ -155,7 +155,7 @@ function wooc_validate_extra_register_fields( $username, $email, $validation_err
             // WC()->session->set('customerId', (string)$BQ->get_customerId());
             // WC()->session->set('carrier', (string)$BQ->get_carrier());
             $_SESSION['customerId'] = (string)$BQ->get_customerId();
-            $_SESSION['carrier'] = (string)$BQ->get_carrier();
+            $_SESSION['carrier'] = (string)$BQ->get_planId();
         }
     }
 }

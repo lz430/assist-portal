@@ -73,7 +73,7 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
           </div>
           <div class="form-group">
             <label for="cc-name" class="control-label">Cardholder Name</label>
-            <input id="cc-name" type="tel" class="input-lg form-control cc-name" autocomplete="cc-name" required>
+            <input id="cc-name" type="text" class="input-lg form-control cc-name" autocomplete="cc-name" required>
           </div>
           <div class="form-group">
             <label for="cc-exp" class="control-label">Card Expiration Date</label>
@@ -88,7 +88,6 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
         </form>
     </div> <!-- end payment-form -->
   </div> <!-- end payment-page -->
-
   <!-- Modal for processing -->
     <div class="modal fade bs-example-modal-sm processing-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm">
@@ -108,9 +107,6 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-
-
 <script>
   jQuery(function($) {
     $('.cc-number').payment('formatCardNumber');

@@ -73,7 +73,7 @@
             WC()->session->set('planPrice', (string)$BQ->get_planPrice());
             WC()->session->set('mdn', $BQ->get_telephoneNumber1());
             WC()->session->set('daysLeft', $BQ->get_daysLeft());
-            WC()->session->set('carrier', $BQ->get_carrier());
+            WC()->session->set('carrier', $BQ->get_planId());
             // $_SESSION['fullname'] = WC()->session->get('fullname');
             // $_SESSION['customerId'] = WC()->session->get('customerId');
             // $_SESSION['balance'] = WC()->session->get('balance');

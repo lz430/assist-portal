@@ -79,3 +79,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 <?php endif; ?>
 <?php do_action( 'woocommerce_after_customer_login_form' ); ?>
+	<div class="container">
+		<div class="col-lg-2 col-md-2 col-sm-hidden col-xs-hidden"></div>
+		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+			<p><strong>Welcome to the Assist Wireless Customer Portal!</strong> Login or create an account to check your voice, text, and data balance, purchase a top-up, and pay your bill.
+			</br></br>To register for the portal, you will need to:<ul>
+  <li>Provide your <strong>email address</strong>.</li>
+  <li>Create a new <strong>password</strong>.</li>
+  <li>Provide your <strong>Assist Wireless phone number</strong>.</li>
+  <li>Provide your <strong>date of birth</strong> in this format: YYYY-MM-DD</li>
+</ul>
+			If you have any questions or if you need help, call us at <strong>(855) 392-7747</strong>.</p>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-hidden col-xs-hidden"></div>
+	</div>

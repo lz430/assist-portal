@@ -258,6 +258,10 @@ class BQ_CustomerProfile extends BQ_Base {
         return (string)$this->response->response[0]->customer[0]->telephones[0]->telephone[0]->carrier;
     }
 
+    public function get_planId() {
+        return (string)$this->response->response[0]->customer[0]->telephones[0]->telephone[0]->planId;
+    }
+
     public function get_planName() {
         return $this->response->response[0]->customer[0]->telephones[0]->telephone[0]->planName;
     }

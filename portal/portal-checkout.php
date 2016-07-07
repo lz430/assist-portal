@@ -77,7 +77,7 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
         <h2 class="validation"></h2>
         <div class="form-group">
           <label for="cc-name" class="control-label">Cardholder Name </label>
-          <input id="cc-name" type="tel" class="input-lg form-control cc-name" autocomplete="cc-name" required placeholder="John Doe">
+          <input id="cc-name" type="text" class="input-lg form-control cc-name" autocomplete="cc-name" required placeholder="John Doe">
         </div>
         <div class="form-group">
           <label for="cc-number" class="control-label">Card Number </label>
@@ -101,8 +101,6 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
       </form>
       
     </div>
-
-
     <!-- Modal for processing -->
     <div class="modal fade bs-example-modal-sm processing-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm">
@@ -122,8 +120,6 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-
     <script>
       jQuery(function($) {
         $('.cc-number').payment('formatCardNumber');
@@ -142,7 +138,6 @@ add_action( 'wp_enqueue_scripts', 'add_jquery_payment' );
           $('.cc-brand').text(cardType);
           $('.validation').removeClass('text-danger text-success');
           $('.validation').addClass($('.has-error').length ? 'text-danger' : 'text-success');
-
           if (!$('.has-error').length) {
             // $('.validation').text("Processing payment...");
             $('.processing-modal').modal('show');

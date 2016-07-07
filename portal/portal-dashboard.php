@@ -116,12 +116,10 @@
               'meta_key' => '_price',
               'order' => 'asc'
           );
+
           // Product SKUs vary based on the carrier
-          if (WC()->session->get("carrier") == 'Assist Wholesale') {
-            $args['product_tag'] = 'aw';
-          } else {
-            $args['product_tag'] = 'gsm';
-          }
+          $args['product_tag'] = WC()->session->get("carrier");
+
           $the_query = new WP_Query( $args );
           // The Loop
           while ( $the_query->have_posts() ) {
@@ -160,11 +158,8 @@
             'order' => 'asc'
         );
         // Product SKUs vary based on the carrier
-        if (WC()->session->get("carrier") == 'Assist Wholesale') {
-          $args['product_tag'] = 'aw';
-        } else {
-          $args['product_tag'] = 'gsm';
-        }
+        $args['product_tag'] = WC()->session->get("carrier");
+
         $the_query = new WP_Query( $args );
         // The Loop
         while ( $the_query->have_posts() ) {
@@ -202,12 +197,10 @@
             'meta_key' => '_price',
             'order' => 'asc'
         );
+
         // Product SKUs vary based on the carrier
-        if (WC()->session->get("carrier") == 'Assist Wholesale') {
-          $args['product_tag'] = 'aw';
-        } else {
-          $args['product_tag'] = 'gsm';
-        }
+        $args['product_tag'] = WC()->session->get("carrier");
+
         $the_query = new WP_Query( $args );
         // The Loop
         while ( $the_query->have_posts() ) {
