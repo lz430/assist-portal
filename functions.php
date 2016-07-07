@@ -2,10 +2,10 @@
 include 'wp_bootstrap_navwalker.php';
 /** Load up scripts/styles */
 function assist_scripts_styles() {
-    wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css');
+    wp_enqueue_style('bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css');
     wp_enqueue_script( 'html5shiv', get_template_directory_uri().'/js/html5shiv.js');
     wp_enqueue_script( 'superfish', get_template_directory_uri().'/js/superfish.js', array('jquery'));
-    wp_enqueue_script( 'bootstrap','https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'));
+    wp_enqueue_script( 'bootstrap','//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'));
     wp_enqueue_script( 'jquery-masked-input', get_template_directory_uri().'/js/jquery.masked.input.js', array('jquery'));
     wp_enqueue_script( 'jquery-validate', get_template_directory_uri().'/js/jquery.validate.js', array('jquery'));
     wp_enqueue_script( 'enrollment-form', get_template_directory_uri().'/js/enrollmentForm.js');
@@ -18,9 +18,9 @@ add_action('wp_enqueue_scripts', 'assist_scripts_styles');
 // include get_template_directory() . '/portal/portal-dashboard.php';
 function assist_portal_scripts_styles() {
     wp_enqueue_style('portal-style', get_template_directory_uri().'/css/portal.css', array(), rand(111,9999));
-    wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array(), rand(111,9999));
-    wp_enqueue_style('gauge-style', 'http://www.jqueryscript.net/demo/jQuery-Plugin-To-Generate-Animated-Dynamic-Gauges-dynameter/css/jquery.dynameter.css', array(), rand(111,9999));
-    wp_enqueue_script('gauge-script', 'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js', array(), rand(111,9999));
+    wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array(), rand(111,9999));
+    wp_enqueue_style('gauge-style', get_template_directory_uri().'/css/jquery.dynameter.css', array(), rand(111,9999));
+    wp_enqueue_script('gauge-script', '//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js', array(), rand(111,9999));
     wp_enqueue_script('gauges', get_template_directory_uri().'/js/justgage-1.1.0.min.js', array(), rand(111,9999));
     wp_enqueue_script( 'jquery_payment', get_template_directory_uri() . '/js/jquery.payment/jquery.payment.min.js', array('jquery') );
     wp_enqueue_script('portal-scripts', get_template_directory_uri().'/js/portal.js', array(), rand(111,9999));
