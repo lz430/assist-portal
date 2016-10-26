@@ -1,6 +1,9 @@
 <?php
 
 class BQ_CustomerProfile extends BQ_Base {
+
+    const RECERTDAYS = '+75 days';
+
     var $customerId;
     var $customerEsn;
 	var $customerMdn;
@@ -292,6 +295,32 @@ class BQ_CustomerProfile extends BQ_Base {
         $dateDiff = $dateStart->diff($dateEnd);
 
     	return strval($dateDiff->days) . " day(s) left in period";
+    }
+
+    public function get_lifelineCertificationType() {
+        return (string)$this->response->response[0]->customer[0]->lifelineCertificationType;
+    }
+
+    public function get_lifelineCertificationEtc() {
+        return (string)$this->response->response[0]->customer[0]->lifelineCertificationEtc;
+    }
+
+    public function get_lifelineCertificationRenewalDate() {
+        return (string)$this->response->response[0]->customer[0]->renewalDate;
+    }
+
+    public function get_lifelineCertificationReceived() {
+        return (string)$this->response->response[0]->customer[0]->lifelineCertificationReceived;
+    }
+
+    public function isUpForRecertification() {
+        $renewalDate = strtotime($this->get_lifelineCertificationRenewalDate());
+
+        if (strtotime(self::RECERTDAYS, $renewalDate) > time()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // https://www.modxsimplecart.com/about/blog/windows-development?tag=PHP
