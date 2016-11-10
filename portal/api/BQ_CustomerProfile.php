@@ -313,10 +313,24 @@ class BQ_CustomerProfile extends BQ_Base {
         return (string)$this->response->response[0]->customer[0]->lifelineCertificationReceived;
     }
 
+    // Return number of days between renewal date and today
+    // If renewal date has passed, number will be negative
+    // If isUpForRecertification = FALSE, return 99999
+
+    public function get_RecertificationDays() {
+        if ($this->isUpForRecertification()) {
+            $renewalDate = date_create($this->get_lifelineCertificationRenewalDate());
+
+            return intval(date_diff(new DateTime('now'), $renewalDate)->format('%r%a'));
+        } else {
+            return 99999;
+        }
+    }
+
     public function isUpForRecertification() {
         $renewalDate = strtotime($this->get_lifelineCertificationRenewalDate());
 
-	// No renewal date mean no recert
+        // No renewal date means no recert
         if ($renewalDate == "") {
             return false;
         }
