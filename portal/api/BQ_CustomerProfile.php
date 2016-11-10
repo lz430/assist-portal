@@ -316,6 +316,11 @@ class BQ_CustomerProfile extends BQ_Base {
     public function isUpForRecertification() {
         $renewalDate = strtotime($this->get_lifelineCertificationRenewalDate());
 
+	// If no renewalDate, then return false for recert
+	if ($renewalDate == "") {
+            return false;
+        }
+	    
         if (strtotime(self::RECERTDAYS, $renewalDate) > time()) {
             return true;
         } else {
