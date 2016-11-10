@@ -2,7 +2,7 @@
 
 class BQ_CustomerProfile extends BQ_Base {
 
-    const RECERTDAYS = '+75 days';
+    const RECERTDAYS = '-75 days';
 
     var $customerId;
     var $customerEsn;
@@ -316,7 +316,7 @@ class BQ_CustomerProfile extends BQ_Base {
     public function isUpForRecertification() {
         $renewalDate = strtotime($this->get_lifelineCertificationRenewalDate());
 
-        if (strtotime(self::RECERTDAYS, $renewalDate) > time()) {
+        if (time() > strtotime(self::RECERTDAYS, $renewalDate)) {
             return true;
         } else {
             return false;
