@@ -1098,6 +1098,9 @@ li.menu-item:nth-of-type(2){
     Registration
 \* -------------------------------------- */
 #login button, input[type="text"],input[type="password"],input[type="email"], select, textarea{width:99%;}
+#login .modal .close{
+    width: auto;
+}
 /* -------------------------------------- *\
     Account Usage Summary
 \* -------------------------------------- */

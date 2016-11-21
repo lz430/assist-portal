@@ -31,6 +31,12 @@
   WC()->session->set("remainingData", $BQ->get_remainingData());
   WC()->session->set("remainingMinutes", $BQ->get_remainingMinutes());
   WC()->session->set("remainingText", $BQ->get_remainingText());
+
+  $upForRecert = WC()->session->get("recert");
+
+  echo '<script>';
+  echo 'var upForRecert = ' . json_encode($upForRecert) . ';';
+  echo '</script>';
 ?>
 <div class="portal-header">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 account-name">
@@ -218,6 +224,30 @@
     </div>
   </div>
 </div>
+
+<!-- Modal for Recertification -->
+<div class="modal fade" id="modalRecert" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">URGENT!</h4>
+      </div>
+      <div class="modal-body">
+        <h1>Your account is due for annual recertification.</h1>
+
+        <p>You must prove lifeline eligibility annually to keep your lifeline service active according to FCC regulations. Failure to prove eligibility annually will result in disconnection of your wireless services.</p>
+
+        <h2>Recertifying is EASY!</h2>
+        <a href=" https://www.assistwireless.com/annual-recertification/" class="btn btn-warning">More Info</a>
+        <a href="https://www.lifelinerenewal.com/" class="btn btn-primary pull-right" id="recertifyIframe">Recertify Now</a>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <!-- Do not remove -->
 </div>
 </div>
@@ -310,6 +340,9 @@
       }],
       counter: true
     });
+    
+
+
   });
 </script>
 <?php get_footer(); ?>
