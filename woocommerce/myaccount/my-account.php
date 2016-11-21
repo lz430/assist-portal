@@ -50,6 +50,12 @@
 </div> <!-- end portal-header-->
 <div class="clearfix"></div>
 <div class="container account-balance-summary">
+  <div class="row alerts-container">
+    <div class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="warningText"></div>
+    </div>
+  </div>
   <div class="row">
     <h3 class="center">Available Balances</h3>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 voice-balance summary-box">
@@ -239,8 +245,8 @@
         <p>You must prove lifeline eligibility annually to keep your lifeline service active according to FCC regulations. Failure to prove eligibility annually will result in disconnection of your wireless services.</p>
 
         <h2>Recertifying is EASY!</h2>
-        <a href=" https://www.assistwireless.com/annual-recertification/" class="btn btn-warning">More Info</a>
-        <a href="https://www.lifelinerenewal.com/" class="btn btn-primary pull-right" id="recertifyIframe">Recertify Now</a>
+        <a href=" https://www.assistwireless.com/annual-recertification/" target="_blank" class="btn btn-warning">More Info</a>
+        <a href="" class="btn btn-primary pull-right" id="recertifyIframe">Recertify Now</a>
       </div>
       <div class="modal-footer">
       </div>

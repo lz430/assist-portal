@@ -13,15 +13,27 @@ jQuery(document).ready(function(){
 
 jQuery(window).load(function(){
   // Modal recertification
-  var recertURL = 'https://www.lifelinerenewal.com/';
-  var recertModal = jQuery('#modalRecert .modal-body');
-
   if(upForRecert === true){
+    var recertBody = '<iframe src="https://www.lifelinerenewal.com/" width="1170" height="800"></iframe>';
+    var warningText = '<strong>URGENT!</strong> Your account is due for annual recertification.';
+    
+    //show warning on dashboard
+    jQuery('.alerts-container .alert').show();
+    jQuery('.warningText').html(warningText);
+    
+    //show modal
     jQuery("#modalRecert").modal('show');
-    jQuery("#modalRecert iframe").attr({
-      'src': recertURL,
-      'height': 600,
-      'width': 1170
-    });
+    jQuery('#recertifyIframe').on('click', function(e){
+      e.preventDefault();
+      jQuery("#modalRecert, .modal-content").css({
+        'width': '100%',
+        'height': '800px'
+      });
+      jQuery("#modalRecert .modal-dialog").css({
+        'width': '1170px'
+      });
+      jQuery('#modalRecert .modal-body').replaceWith(recertBody);
+    })
+
   }
 });
