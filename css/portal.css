@@ -1102,6 +1102,21 @@ li.menu-item:nth-of-type(2){
 #login .alert button{
     width: auto;
 }
+form.register .loading{
+    display: block;
+    margin: 0 auto;
+    width: 75px;
+}
+form.register .hide-me{
+    display: none;
+}
+.sub-text{
+    color: red;
+    display: block;
+    float: right;
+    font-size: 11px;
+    line-height: 28px;
+}
 /* -------------------------------------- *\
     Account Usage Summary
 \* -------------------------------------- */
@@ -1213,3 +1228,7 @@ body.home p#nav{display: none;}
     border-color:transparent;
     outline:none;
 }
+.alert button.close{
+    right: 0;
+}
+

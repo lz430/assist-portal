@@ -2,7 +2,8 @@
 
 class Setting {
     // const URL = 'https://123.telcoprovider.com/perl/xml/gateway.cgi';
-    const URL = 'http://104.245.38.218/gateway.cgi';
+    // const URL = 'http://104.245.38.218/gateway.cgi';
+    const URL = 'http://54.186.150.176/gateway.cgi';  //New IP
     const CLEC_ID = "208";
     const CLEC_FIRSTNAME = "customer";
     const CLEC_LASTNAME = "portal_api";
