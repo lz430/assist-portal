@@ -966,6 +966,9 @@
 .portal-header .account-number{text-align: right;}
 .portal-header h2, .portal-header h4{margin:0;}
 .account-summary{background: #EBECED;}
+.account-summary p{
+    margin-bottom: 5px;
+}
 .account-summary .chart{width:95%;margin: 0;}
 #chartContainer{height:250px;width:100%;}
 .canvasjs-chart-credit{display: none;}
@@ -1097,7 +1100,7 @@ li.menu-item:nth-of-type(2){
 /* -------------------------------------- *\
     Registration
 \* -------------------------------------- */
-#login button, input[type="text"],input[type="password"],input[type="email"], select, textarea{width:99%;}
+#login button, input[type="text"],input[type="password"],input[type="tel"],input[type="email"], select, textarea{width:99% !important;}
 #login .modal .close, 
 #login .alert button{
     width: auto;
@@ -1122,7 +1125,7 @@ form.register .hide-me{
 \* -------------------------------------- */
 #page .clearfix + .container{width:100%;padding:0;}
 img{max-width: 100%;}
-.balance img{max-width: 97%;}
+.balance img{max-width: 91%;}
 .form-control{width:95%;}
 .account-balance-summary{}
 .account-balance-summary .summary-box,
@@ -1131,14 +1134,45 @@ img{max-width: 100%;}
 .account-balance-summary .summary-box h4{margin:5px 0;}
 .account-balance-summary .summary-box .fa{font-size:40px;}
 .summary-days-left{border-top:1px solid #999;border-bottom:1px solid #999;padding: 10px 0;text-align: center;margin: 10px 0 ;}
+.progress{
+    height: auto;
+    margin: 20px auto;
+}
+.progress-bar{
+    background: linear-gradient(to bottom, rgba(174, 10, 30, 1) 0%, rgba(142, 5, 21, 1) 100%);
+}
+.progress h4{
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+}
 .text-balance{border-left:1px solid #999;border-right: 1px solid #999;}
-.account-summary{}
+.account-summary .make-payment{
+    margin: 0 0 13px !important;
+    float: right !important;
+}
 .account-summary h4{text-align: center;}
-.account-summary .make-payment{width:150px;margin:20px auto;display: block;}
+.account-summary .make-payment,
+.account-summary .btn.auto-pay{
+    width:150px;
+    margin:20px 0;
+    display: block;
+    float: left;
+}
+.account-summary .btn.auto-pay{float: right;}
 /* -------------------------------------- *\
     Dashboard
 \* -------------------------------------- */
-.modal-dialog{z-index: 999;}
+.modal-dialog{z-index: 999;width: 95%;}
+@media screen and (min-width: 1024px){
+    .modal-dialog{
+        width: 50%;
+    }
+}
+.account-name{
+    padding-left: 0;
+}
+.modal-content iframe{border: 0 none; width: 100%;}
 .modal-title{color:#fff;}
 .modal li{list-style-type: none;width:48%;padding:10px;float:left;min-height:133px;margin:2% 0;border: 1px solid transparent;}
 .modal li:hover{background:#fafafa;border: 1px solid #dcdcdc;}
@@ -1168,6 +1202,10 @@ img{max-width: 100%;}
     .summary-box{border-left: 0;border-right:0;}
     #menu-top-menu{width:100%;text-align: center;}
     ul.sub-menu li a{padding:15px !important;}
+    .gauge-container{
+        width: 82%;
+        margin: 0 auto;
+    }
 }
 /* -------------------------------------- *\
     Checkout
@@ -1193,7 +1231,7 @@ table .static-width{width:20%;}
 .input-lg:active, 
 .input-lg:focus{background: #fff;}
 .make-payment .phone-no{width:30%;}
-.loader{display: block;margin:0 auto;width:50%;}
+.loader{display: block;margin:0 auto;max-width:50%;}
 /* -------------------------------------- *\
     Shop
 \* -------------------------------------- */
@@ -1215,9 +1253,14 @@ body.home p#nav{display: none;}
 /* -------------------------------------- *\
     Errors
 \* -------------------------------------- */
-.woocommerce-error{
+.woocommerce-error, 
+label.error{
     color:#a94442 !important;
     background-color:#f2dede !important;
+}
+.woocommerce form .form-row label.error{
+    margin-top: 10px;
+    font-weight: normal;
 }
 .alert{padding:10px;}
 /* -------------------------------------- *\
@@ -1232,3 +1275,24 @@ body.home p#nav{display: none;}
     right: 0;
 }
 
+/* Progress bars */
+
+
+/* Home page signup */
+.marketing-row{
+    border-bottom: 1px solid #999;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+#sign-up label{
+    display: block; 
+    font-size: 125%;
+    text-align: center;
+}
+
+#sign-up input[type="email"]{
+    margin-bottom: 15px;
+}
+#sign-up input[type="submit"]{
+    float: right;
+}
